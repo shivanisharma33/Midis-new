@@ -32,19 +32,31 @@ const FeaturedWorks = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
-  const spacedTitle = "Featured Works for Our Incredible Clients.".split("").join("    ");
+  const spacedTitle = "Featured Works for Our Incredible Clients.";
 
   return (
     <section ref={containerRef} className="py-24 lg:py-32">
       <div className="container mx-auto px-6">
-        <motion.h3
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-sm md:text-base font-medium tracking-[0.3em] text-center mb-16"
-        >
-          {spacedTitle}
-        </motion.h3>
+      <div className="flex items-center justify-center gap-6 mb-16">
+  <span className="w-16 h-px bg-neutral-300" />
+
+  <motion.h3
+    initial={{ opacity: 0, y: 30 }}
+    animate={isInView ? { opacity: 1, y: 0 } : {}}
+    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    className="
+      text-[11px] 
+      uppercase 
+      tracking-[0.45em] 
+      text-neutral-600
+    "
+  >
+    {spacedTitle}
+  </motion.h3>
+
+  <span className="w-16 h-px bg-neutral-300" />
+</div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {works.map((work, index) => (

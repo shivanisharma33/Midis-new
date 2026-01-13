@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const reasons = [
   {
@@ -36,12 +36,23 @@ const WhyChooseUs = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-120px" });
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    setIsMobile(media.matches);
+
+    const listener = () => setIsMobile(media.matches);
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
+  }, []);
+
   return (
     <section
       ref={containerRef}
       className="relative py-24 lg:py-32 overflow-hidden"
     >
-      {/* Soft background glow */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-neutral-50 via-white to-white" />
 
       <div className="container mx-auto px-6">
@@ -50,14 +61,10 @@ const WhyChooseUs = () => {
           <span className="w-16 h-px bg-neutral-300" />
 
           <motion.h3
-            initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-            animate={
-              isInView
-                ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                : {}
-            }
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[40px] uppercase  text-black font-semibold text-center leading-tight"
+            className="text-[40px] font-semibold text-center leading-tight"
           >
             Why Leading Brands Choose To Work With Us
           </motion.h3>
@@ -65,67 +72,84 @@ const WhyChooseUs = () => {
           <span className="w-16 h-px bg-neutral-300" />
         </div>
 
-        {/* Grid */}
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {reasons.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 60, scale: 0.96 }}
-              animate={
-                isInView
-                  ? { opacity: 1, y: 0, scale: 1 }
-                  : {}
-              }
-              transition={{
-                duration: 0.9,
-                ease: [0.16, 1, 0.3, 1],
-                delay: index * 0.18,
-              }}
-              whileHover={{ y: -6 }}
-              className="group"
-            >
-              {/* Image */}
-              <div className="relative overflow-hidden rounded-3xl">
-                <motion.img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-80 lg:h-96 object-cover"
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ duration: 1.2, ease: "easeOut" }}
-                />
+          {reasons.map((item, index) => {
+            const mobileX = index % 2 === 0 ? -80 : 80;
+            const desktopX = index === 1 ? 120 : -120;
 
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                {/* Glass sheen */}
-                <div className="absolute inset-0 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition duration-700" />
-              </div>
-
-              {/* Meta */}
-              <div className="mt-6 flex items-center gap-3">
-                <span className="text-sm text-neutral-500">
-                  {item.category}
-                </span>
-                <span className="text-neutral-400">•</span>
-                <span className="text-sm text-neutral-500">
-                  {item.year}
-                </span>
-              </div>
-
-              {/* Title */}
-              <motion.h4
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
+            return (
+              <motion.div
+                key={index}
+                initial={
+                  isMobile
+                    ? { opacity: 0, x: mobileX }
+                    : { opacity: 0, x: desktopX }
+                }
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{
-                  delay: index * 0.2 + 0.3,
-                  duration: 0.6,
+                  duration: 0.9,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: index * 0.15,
                 }}
-                className="mt-2 text-2xl font-medium tracking-tight"
+                className="group"
               >
-                {item.title}
-              </motion.h4>
-            </motion.div>
-          ))}
+                {/* IMAGE SHOWCASE (SAME-TO-SAME EFFECT) */}
+                <div className="relative overflow-hidden rounded-3xl bg-neutral-100">
+                  <motion.div
+                    className="relative w-full h-80 lg:h-96 flex items-center justify-center"
+                    whileHover={!isMobile ? { scale: 0.9 } : {}}
+                    transition={{
+                      duration: 0.45,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                  >
+                    {/* Blurred background layer */}
+                    <motion.img
+                      src={item.image}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover"
+                      whileHover={
+                        !isMobile
+                          ? {
+                              scale: 1.05,
+                              filter: "blur(14px)",
+                              opacity: 0.6,
+                            }
+                          : {}
+                      }
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                    />
+
+                    {/* Foreground product image */}
+                    <motion.img
+                      src={item.image}
+                      alt={item.title}
+                      className="relative w-[90%] h-[90%] object-cover rounded-2xl shadow-2xl"
+                      whileHover={!isMobile ? { scale: 0.88 } : {}}
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                    />
+                  </motion.div>
+                </div>
+
+                {/* Meta */}
+                <div className="mt-6 flex items-center gap-3">
+                  <span className="text-sm text-neutral-500">
+                    {item.category}
+                  </span>
+                  <span className="text-neutral-400">•</span>
+                  <span className="text-sm text-neutral-500">
+                    {item.year}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h4 className="mt-2 text-2xl font-medium tracking-tight">
+                  {item.title}
+                </h4>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

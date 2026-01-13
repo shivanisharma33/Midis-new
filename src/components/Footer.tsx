@@ -25,7 +25,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <h5 className="text-xl font-medium mb-4">Styler.</h5>
+            <h5 className="text-xl font-medium mb-4">midis.</h5>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               A dynamic agency dedicated to bringing your ideas to life. Where creativity meets purpose.
             </p>
@@ -106,9 +106,12 @@ const Footer = () => {
               Contacts
             </h6>
             <div className="space-y-3 text-sm text-muted-foreground">
-              <p>XYZ Times Sq, New York,<br />United States</p>
-              <p>hello@styler.com</p>
-              <p>+1 023-456-789</p>
+              <p>1st Floor, E 279, Industrial Area,
+Sector 75, S.A.S Nagar, Punjab
+160055<br />United States</p>
+            
+              <p>91 97793 20626
+git</p>
             </div>
           </div>
         </div>

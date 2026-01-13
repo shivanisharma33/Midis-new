@@ -6,28 +6,28 @@ const services = [
   {
     image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d10d0123c0be15052ede_Glossy%20Tote%20Bags%20on%20Vibrant%20Background.webp",
     tag: "Website",
-    title: "Design",
+    title: "Web Development",
     description: "Driven by a deep passion for design, we craft meaningful visuals that spark emotion and leave a powerful, lasting impression on your audience.",
     bgColor: "bg-[#f8f4f0]",
   },
   {
     image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d1498f8548f8568bc6f7_Pastel%20Sneakers%20Display.webp",
     tag: "SEO",
-    title: "Marketing",
+    title: "Graphic Designing",
     description: "We utilize a diverse blend of strategic channels and tailored tactics, each carefully selected and refined to effectively reach your goals.",
     bgColor: "bg-[#fff5f0]",
   },
   {
     image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d16b259fd242a0ee6c1e_Modern%20Device%20Close-Up.webp",
     tag: "Front-end",
-    title: "Prototype",
+    title: "Content Writing",
     description: "Highlighting the essential features, interactive elements, and practical functionalities that bring your idea to life.",
     bgColor: "bg-[#f0f5ff]",
   },
   {
     image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d19782c018e44a110307_Modern%20Elegance_%20Tech%20%26%20Texture.webp",
     tag: "Business",
-    title: "Branding",
+    title: "Email Marketing",
     description: "A thoughtful craft rooted in storytelling and design—shaping perceptions, stirring emotions, and curating meaningful experiences.",
     bgColor: "bg-[#f5f0ff]",
   },
@@ -107,7 +107,7 @@ const Services = () => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <span className="text-sm md:text-base font-medium tracking-[0.3em] uppercase text-muted-foreground">
+          <span className="text-[40px]   uppercase text-black font-semibold leading-tight">
             Services We're Passionate About
           </span>
         </motion.div>

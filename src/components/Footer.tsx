@@ -110,8 +110,8 @@ const Footer = () => {
 Sector 75, S.A.S Nagar, Punjab
 160055<br />United States</p>
             
-              <p>91 97793 20626
-git</p>
+              <p>+91 97793 20626
+</p>
             </div>
           </div>
         </div>

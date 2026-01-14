@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/Index";
 import AboutPage from "./pages/AboutPage";
+
 import NotFound from "./pages/NotFound";
+import ServicesPage from "./pages/ServicesPage";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +26,8 @@ const App = () => {
 
             {/* About Us Page */}
             <Route path="/about" element={<AboutPage />} />
-
+            {/* About Us Page */}
+            <Route path="/services" element={<ServicesPage />} />
             {/* 404 Page - Must be last */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -4,6 +4,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+import serviceBranding from "../assets/service-branding.webp";
+import workspaceImg from "../assets/Artistic Designers Modern Workspace.png";
+import testimonialBg from "../assets/testimonial-bg.webp";
+import futuristicVR from "../assets/Futuristic VR Experience (1).png";
+
 type ReasonItem = {
   number: string;
   title: string;
@@ -14,23 +19,22 @@ const items: ReasonItem[] = [
   {
     number: "01.",
     title: "EXPERTISE &\nSPECIALIZATION",
-    image: "./src/assets/service-branding.webp",
+    image: serviceBranding,
   },
   {
     number: "02.",
     title: "24/7 CUSTOMER\nSUPPORT",
-    image:
-      "./src/assets/Artistic Designers Modern Workspace.png",
+    image: workspaceImg,
   },
   {
     number: "03.",
     title: "COST-EFFECTIVE\nSOLUTIONS",
-    image: "./src/assets/testimonial-bg.webp",
+    image: testimonialBg,
   },
   {
     number: "04.",
     title: "EXPERTISE &\nSPECIALIZATION",
-    image: "./src/assets/Futuristic VR Experience (1).png",
+    image: futuristicVR,
   },
 ];
 

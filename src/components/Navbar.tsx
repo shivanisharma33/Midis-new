@@ -69,7 +69,7 @@ export default function Navbar() {
       <div className="hidden md:flex items-center gap-8 bg-white/80 backdrop-blur-xl rounded-full px-6 py-2 shadow-2xl border border-black/10">
         {/* LEFT */}
         <div className="flex items-center gap-2">
-          <a className="px-4 py-2 hover:text-coral" href="/">
+          <a className="px-4 py-2 hover:text-coral" href="/about">
             About
           </a>
 

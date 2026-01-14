@@ -26,22 +26,24 @@ const TeamSection: React.FC = () => {
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-          className="max-w-3xl mb-40"
-        >
-          <span className="block text-xs uppercase tracking-[0.5em] text-gray-400 mb-10">
-            Our Team
-          </span>
+    {/* Heading */}
+<motion.div
+  initial={{ opacity: 0, x: -80 }}   // 👈 start from left
+  whileInView={{ opacity: 1, x: 0 }} // 👉 move to normal position
+  transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+  viewport={{ once: true }}
+  className="max-w-3xl mb-40"
+>
+  <span className="block text-xs uppercase tracking-[0.5em] text-gray-400 mb-10">
+    Our Team
+  </span>
 
-          <h2 className="text-[46px] md:text-[66px] lg:text-[88px] font-semibold leading-[1.02] tracking-tight text-black">
-            The people behind <br />
-            <span className="text-black/30">Midis</span>
-          </h2>
-        </motion.div>
+  <h2 className="text-[46px] md:text-[66px] lg:text-[88px] font-semibold leading-[1.02] tracking-tight text-black">
+    The people behind <br />
+    <span className="text-black/30">Midis</span>
+  </h2>
+</motion.div>
+
 
         {/* Team Members */}
         <div className="space-y-44">

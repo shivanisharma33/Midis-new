@@ -83,95 +83,118 @@ const imageReveal = {
 const ServicesPage: React.FC = () => {
   return (
     <>
-      {/* ================= NAVBAR ================= */}
       <Navbar />
 
-      {/* ================= SERVICES SECTION ================= */}
       <section className="min-h-screen bg-black px-6 lg:px-20 py-32">
         <div className="max-w-7xl mx-auto">
 
           {/* Heading */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="max-w-3xl mb-24"
-          >
-            <span className="text-xs uppercase tracking-[0.45em] text-white/80">
-              Services
+     {/* Heading */}
+<motion.div
+  variants={fadeUp}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="max-w-3xl mb-24"
+>
+  {/* Eyebrow */}
+  <div className="flex items-center gap-6 mb-6">
+    <span className="h-px w-16 bg-white/40" />
+    <span className="text-xs uppercase tracking-[0.45em] text-white/80">
+      Services
+    </span>
+  </div>
+
+  {/* Main Title */}
+  <h1 className="text-[48px] md:text-[64px] lg:text-[84px] font-semibold leading-[1.05] tracking-tight text-white">
+    What we craft <br />
+    <span className="text-white/60">for growing brands</span>
+  </h1>
+
+  {/* Supporting Copy */}
+  <p className="mt-8 text-lg leading-relaxed text-white/70 max-w-xl">
+    From strategy to execution, we design and build digital solutions
+    that elevate brands, engage audiences, and drive measurable growth.
+  </p>
+
+  {/* Accent Line */}
+  <motion.div
+    initial={{ width: 0 }}
+    whileInView={{ width: "120px" }}
+    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    className="mt-10 h-[2px] bg-white/30"
+  />
+</motion.div>
+
+          {/* Cards */}
+       <div className="space-y-16 md:space-y-24">
+  {services.map((service, index) => (
+    <motion.div
+      key={index}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="relative rounded-[24px] md:rounded-[28px] bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl overflow-hidden"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 p-6 sm:p-8 lg:p-16 items-center">
+
+        {/* Image */}
+        <motion.div
+          variants={imageReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="relative rounded-xl sm:rounded-2xl overflow-hidden"
+        >
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-[220px] sm:h-[260px] lg:h-[360px] object-cover"
+          />
+          <div className="absolute inset-0 bg-black/10" />
+        </motion.div>
+
+        {/* Content */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="max-w-xl text-center lg:text-left"
+        >
+          <span className="flex justify-center lg:justify-start items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-white/80 mb-4">
+            <span className="w-2 h-2 bg-white rounded-full" />
+            {service.tag}
+          </span>
+
+          <h2 className="text-[26px] sm:text-[30px] md:text-[36px] lg:text-[44px] font-semibold text-white mb-4 sm:mb-6">
+            {service.title}
+          </h2>
+
+          <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed text-white/85">
+            {service.description}
+          </p>
+
+          <button className="group mx-auto lg:mx-0 flex items-center gap-4 mt-8 sm:mt-10 text-white">
+            <span className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white text-orange-600 flex items-center justify-center text-lg font-medium transition-transform duration-300 group-hover:scale-110">
+              →
             </span>
+            <span className="text-xs sm:text-sm tracking-wide">
+              Learn More
+            </span>
+          </button>
+        </motion.div>
 
-            <h1 className="text-[48px] md:text-[64px] lg:text-[84px] font-semibold leading-tight text-white mt-6">
-              What we craft <br />
-              <span className="text-white/70">for growing brands</span>
-            </h1>
-          </motion.div>
+      </div>
+    </motion.div>
+  ))}
+</div>
 
-          {/* Service Cards */}
-          <div className="space-y-24">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                className="relative rounded-[28px] bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl overflow-hidden"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-14 p-10 lg:p-16">
-
-                  {/* Image */}
-                  <motion.div
-                    variants={imageReveal}
-                    className="relative rounded-2xl overflow-hidden"
-                  >
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-[320px] lg:h-[360px] object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/10" />
-                  </motion.div>
-
-                  {/* Content */}
-                  <motion.div
-                    variants={fadeUp}
-                    className="max-w-xl"
-                  >
-                    <span className="flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-white/80 mb-6">
-                      <span className="w-2 h-2 bg-white rounded-full" />
-                      {service.tag}
-                    </span>
-
-                    <h2 className="text-[36px] md:text-[44px] font-semibold text-white mb-6">
-                      {service.title}
-                    </h2>
-
-                    <p className="text-lg leading-relaxed text-white/90">
-                      {service.description}
-                    </p>
-
-                    {/* CTA */}
-                    <button className="group flex items-center gap-4 mt-10 text-white">
-                      <span className="w-12 h-12 rounded-full bg-white text-orange-600 flex items-center justify-center text-lg font-medium transition-transform duration-300 group-hover:scale-110">
-                        →
-                      </span>
-                      <span className="text-sm tracking-wide">
-                        Learn More
-                      </span>
-                    </button>
-                  </motion.div>
-
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
         </div>
       </section>
 
-      {/* ================= FOOTER ================= */}
       <Footer />
     </>
   );

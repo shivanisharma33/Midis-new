@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
 import logo from "@/assets/midis-logo.png";
 
 /* ================= DATA ================= */
@@ -71,9 +70,9 @@ export default function Navbar() {
 
         {/* LEFT */}
         <div className="flex items-center gap-2">
-          <Link to="/about" className="px-4 py-2 hover:text-coral">
+          <a href="/about" className="px-4 py-2 hover:text-coral">
             About
-          </Link>
+          </a>
 
           {/* SERVICES */}
           <div
@@ -84,12 +83,12 @@ export default function Navbar() {
               setHoveredItem(null);
             }}
           >
-            <Link
-              to="/services"
+            <a
+              href="/services"
               className="px-4 py-2 flex items-center gap-1 hover:text-coral"
             >
               Services <ChevronDown className="w-4 h-4" />
-            </Link>
+            </a>
 
             <AnimatePresence>
               {servicesOpen && (
@@ -113,14 +112,14 @@ export default function Navbar() {
                     )}
                     <div className="flex flex-col">
                       {navItems.services.map((item) => (
-                        <Link
+                        <a
                           key={item.label}
-                          to={`/services#${item.label.toLowerCase()}`}
+                          href="/services"
                           onMouseEnter={() => setHoveredItem(item.label)}
                           className="px-4 py-2 hover:bg-black/5 rounded-lg"
                         >
                           {item.label}
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -131,16 +130,15 @@ export default function Navbar() {
         </div>
 
         {/* LOGO */}
-        <Link
-          to="/"
+        <a
+          href="/"
           className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden"
         >
           <img src={logo} alt="MIDIS Logo" className="w-full h-full object-contain" />
-        </Link>
+        </a>
 
         {/* RIGHT */}
         <div className="flex items-center gap-2">
-          {/* WORKS */}
           <div
             className="relative"
             onMouseEnter={() => setWorksOpen(true)}
@@ -177,6 +175,7 @@ export default function Navbar() {
                       {navItems.works.map((item) => (
                         <a
                           key={item.label}
+                          href="/works"
                           onMouseEnter={() => setHoveredItem(item.label)}
                           className="px-4 py-2 hover:bg-black/5 rounded-lg"
                         >
@@ -190,9 +189,9 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <Link to="#contact" className="px-4 py-2 hover:text-coral">
+          <a href="#contact" className="px-4 py-2 hover:text-coral">
             Contact
-          </Link>
+          </a>
         </div>
       </div>
 
@@ -202,44 +201,81 @@ export default function Navbar() {
           <Menu />
         </button>
 
-        <Link
-          to="/"
+        <a
+          href="/"
           className="w-9 h-9 rounded-full bg-black flex items-center justify-center overflow-hidden"
         >
           <img src={logo} alt="MIDIS Logo" className="w-full h-full object-contain" />
-        </Link>
+        </a>
       </div>
 
-      {/* ================= MOBILE MENU ================= */}
+      {/* ================= MOBILE DRAWER ================= */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            className="md:hidden fixed inset-0 bg-white/80 backdrop-blur-2xl z-[999] flex flex-col"
-          >
-            <div className="flex justify-between items-center px-6 py-5 border-b">
-              <span className="text-lg font-semibold">Menu</span>
-              <button onClick={() => setMobileOpen(false)}>
-                <X />
-              </button>
-            </div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[998]"
+            />
 
-            <div className="flex-1 overflow-y-auto px-6 py-8 space-y-8">
-              <Link to="/about" onClick={() => setMobileOpen(false)} className="text-2xl font-medium">
-                About
-              </Link>
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", stiffness: 120, damping: 18 }}
+              className="md:hidden fixed bottom-0 left-0 right-0 z-[999] bg-white rounded-t-[32px] shadow-2xl"
+            >
+              <div className="flex justify-center pt-3">
+                <span className="w-12 h-1.5 rounded-full bg-black/20" />
+              </div>
 
-              <Link to="/services" onClick={() => setMobileOpen(false)} className="text-2xl font-medium">
-                Services
-              </Link>
+              <div className="flex justify-between items-center px-6 py-5">
+                <span className="text-lg font-semibold">Menu</span>
+                <button onClick={() => setMobileOpen(false)}>
+                  <X />
+                </button>
+              </div>
 
-              <Link to="#contact" onClick={() => setMobileOpen(false)} className="text-2xl font-medium">
-                Contact
-              </Link>
-            </div>
-          </motion.div>
+              <div className="px-6 pb-8 space-y-8">
+                <div className="space-y-4">
+                  <a href="/about" className="block text-2xl font-medium">About</a>
+                    <a href="/services" className="block text-2xl font-medium">Services</a>
+                  <a href="/works" className="block text-2xl font-medium">Works</a>
+                  <a href="#contact" className="block text-2xl font-medium">Contact</a>
+                </div>
+
+                <div>
+                  <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">
+                    Services
+                  </p>
+                  <div className="grid grid-cols-2 gap-4">
+                    {navItems.services.map((item) => (
+                      <a
+                        key={item.label}
+                        href="/services"
+                        className="relative rounded-2xl overflow-hidden"
+                      >
+                        <img src={item.image} className="w-full h-28 object-cover" />
+                        <div className="absolute inset-0 bg-black/30 flex items-end p-3">
+                          <span className="text-white font-medium">{item.label}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                <a
+                  href="#contact"
+                  className="block w-full text-center py-4 rounded-full bg-black text-white font-medium"
+                >
+                  Get in Touch
+                </a>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>

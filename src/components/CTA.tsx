@@ -44,25 +44,27 @@ const CTA = () => {
           </motion.div>
 
           {/* Center Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center max-w-2xl"
-          >
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-8">
-              Let's Work Together!
-            </h3>
-            <motion.a
-              href="#contact"
-              className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-lg font-medium hover:opacity-90 transition-opacity"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <ArrowUpRight className="w-5 h-5" />
-              Contact
-            </motion.a>
-          </motion.div>
+         <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={isInView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+  className="text-center max-w-2xl"
+>
+  <h3 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-8">
+    Let's Work Together!
+  </h3>
+
+  <motion.a
+    href="/contact"
+    className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-lg font-medium hover:opacity-90 transition-opacity"
+    whileHover={{ scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    <ArrowUpRight className="w-5 h-5" />
+    Contact Us
+  </motion.a>
+</motion.div>
+
 
           {/* Floating Images - Right Side */}
           <motion.div

@@ -188,7 +188,7 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <a href="#contact" className="px-4 py-2 hover:text-coral">
+          <a href="/contact" className="px-4 py-2 hover:text-coral">
             Contact
           </a>
         </div>

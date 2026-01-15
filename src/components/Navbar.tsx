@@ -1,6 +1,4 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "@/assets/midis-logo.png";
@@ -59,11 +57,6 @@ export default function Navbar() {
   const [worksOpen, setWorksOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  /* ===== LOCK BODY SCROLL ON MOBILE MENU OPEN ===== */
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-  }, [mobileOpen]);
 
   return (
     <motion.nav
@@ -145,7 +138,6 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className="flex items-center gap-2">
-          {/* WORKS */}
           <div
             className="relative"
             onMouseEnter={() => setWorksOpen(true)}
@@ -196,11 +188,7 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <a href="/blogs" className="px-4 py-2 hover:text-coral">
-            Blogs
-          </a>
-
-          <a href="/contact" className="px-4 py-2 hover:text-coral">
+          <a href="#contact" className="px-4 py-2 hover:text-coral">
             Contact
           </a>
         </div>
@@ -208,8 +196,8 @@ export default function Navbar() {
 
       {/* ================= MOBILE BAR ================= */}
       <div className="md:hidden fixed top-4 left-1/2 -translate-x-1/2 w-[94%] bg-white/90 backdrop-blur-xl rounded-full px-4 py-3 flex items-center justify-between border border-black/10 z-50">
-        <button onClick={() => setMobileOpen(true)} className="p-2">
-          <Menu size={26} />
+        <button onClick={() => setMobileOpen(true)}>
+          <Menu />
         </button>
 
         <a
@@ -220,7 +208,7 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* ================= FULL SCREEN MOBILE MENU ================= */}
+      {/* ================= MOBILE DRAWER ================= */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -229,45 +217,59 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-md z-[998]"
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[998]"
             />
 
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
-              transition={{ type: "spring", stiffness: 110, damping: 18 }}
-              className="fixed inset-0 z-[999] bg-white flex flex-col"
+              transition={{ type: "spring", stiffness: 120, damping: 18 }}
+              className="md:hidden fixed bottom-0 left-0 right-0 z-[999] bg-white rounded-t-[32px] shadow-2xl"
             >
-              {/* Header */}
-              <div className="flex justify-between items-center px-6 py-6 border-b">
-                <span className="text-xl font-semibold">Menu</span>
+              <div className="flex justify-center pt-3">
+                <span className="w-12 h-1.5 rounded-full bg-black/20" />
+              </div>
+
+              <div className="flex justify-between items-center px-6 py-5">
+                <span className="text-lg font-semibold">Menu</span>
                 <button onClick={() => setMobileOpen(false)}>
-                  <X size={28} />
+                  <X />
                 </button>
               </div>
 
-              {/* Links */}
-              <div className="flex-2 flex flex-col justify-center px-8 space-y-10">
-                {["About", "Services", "Works", "Blogs", "Contact"].map(
-                  (item) => (
-                    <a
-                      key={item}
-                      href={`/${item.toLowerCase()}`}
-                      onClick={() => setMobileOpen(false)}
-                      className="text-3xl font-medium tracking-tight"
-                    >
-                      {item}
-                    </a>
-                  )
-                )}
-              </div>
+              <div className="px-6 pb-8 space-y-8">
+                {/* UPDATED LINKS */}
+                <div className="space-y-4">
+                  <a href="/about" className="block text-2xl font-medium">About</a>
+                  <a href="/works" className="block text-2xl font-medium">Works</a>
+                  <a href="/blogs" className="block text-2xl font-medium">Blogs</a>
+                  <a href="/contact" className="block text-2xl font-medium">Contact Us</a>
+                </div>
 
-              {/* CTA */}
-              <div className="px-8 pb-10">
+                <div>
+                  <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">
+                    Services
+                  </p>
+                  <div className="grid grid-cols-2 gap-4">
+                    {navItems.services.map((item) => (
+                      <a
+                        key={item.label}
+                        href="/services"
+                        className="relative rounded-2xl overflow-hidden"
+                      >
+                        <img src={item.image} className="w-full h-28 object-cover" />
+                        <div className="absolute inset-0 bg-black/30 flex items-end p-3">
+                          <span className="text-white font-medium">{item.label}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
                 <a
-                  href="/contact"
-                  className="block w-full text-center py-5 rounded-full bg-black text-white text-lg font-medium"
+                  href="#contact"
+                  className="block w-full text-center py-4 rounded-full bg-black text-white font-medium"
                 >
                   Get in Touch
                 </a>

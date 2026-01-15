@@ -38,50 +38,48 @@ const reasons = [
 
 const WhyChooseUs = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-120px" });
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 768px)");
     setIsMobile(media.matches);
-
     const listener = () => setIsMobile(media.matches);
     media.addEventListener("change", listener);
-
     return () => media.removeEventListener("change", listener);
   }, []);
 
   return (
     <section
       ref={containerRef}
-      className="relative py-32 bg-white overflow-hidden"
+      className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden"
     >
-      {/* Subtle background */}
+      {/* Background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-neutral-50 to-white" />
 
-      <div className="max-w-7xl mx-auto px-8">
-        {/* SECTION HEADER */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mb-28"
+          className="max-w-3xl mb-16 sm:mb-20 lg:mb-28"
         >
-          <h2 className="text-[56px] font-semibold tracking-tight leading-tight">
+          <h2 className="text-[36px] sm:text-[44px] lg:text-[56px] font-semibold tracking-tight leading-tight">
             Why Midis
             <br />
             and Not Someone Else?
           </h2>
 
-          <p className="mt-6 text-lg text-neutral-600 leading-relaxed">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-neutral-600 leading-relaxed">
             There are many agencies. What sets us apart is not noise or promises,
             but how we think, collaborate, and deliver measurable growth.
           </p>
         </motion.div>
 
-        {/* CONTENT ROWS */}
-        <div className="space-y-36">
+        {/* CONTENT */}
+        <div className="space-y-20 sm:space-y-28 lg:space-y-36">
           {reasons.map((item, index) => {
             const reverse = index % 2 !== 0;
 
@@ -93,36 +91,48 @@ const WhyChooseUs = () => {
                 transition={{
                   duration: 0.9,
                   ease: [0.16, 1, 0.3, 1],
-                  delay: index * 0.15,
+                  delay: index * 0.12,
                 }}
-                className={`grid grid-cols-2 gap-20 items-center ${
-                  reverse ? "direction-rtl" : ""
-                }`}
+                className={`
+                  grid
+                  grid-cols-1
+                  lg:grid-cols-2
+                  gap-12
+                  lg:gap-20
+                  items-center
+                `}
               >
                 {/* TEXT */}
-                <div className={`${reverse ? "order-2" : ""}`}>
+                <div className={`${reverse ? "lg:order-2" : ""}`}>
                   <span className="text-xs uppercase tracking-[0.3em] text-neutral-400">
                     {item.eyebrow}
                   </span>
 
-                  <h3 className="mt-4 text-3xl font-medium tracking-tight">
+                  <h3 className="mt-4 text-2xl sm:text-3xl font-medium tracking-tight">
                     {item.title}
                   </h3>
 
-                  <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-xl">
+                  <p className="mt-4 sm:mt-6 text-base sm:text-lg text-neutral-600 leading-relaxed max-w-xl">
                     {item.description}
                   </p>
                 </div>
 
-                {/* IMAGE (UNCHANGED BEHAVIOR) */}
-                <div className="relative overflow-hidden rounded-3xl bg-neutral-100">
+                {/* IMAGE */}
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-100">
                   <motion.div
-                    className="relative w-full h-[420px] flex items-center justify-center"
-                    whileHover={!isMobile ? { scale: 0.9 } : {}}
-                    transition={{
-                      duration: 0.45,
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
+                    className="
+                      relative
+                      w-full
+                      h-[240px]
+                      sm:h-[320px]
+                      md:h-[380px]
+                      lg:h-[420px]
+                      flex
+                      items-center
+                      justify-center
+                    "
+                    whileHover={!isMobile ? { scale: 0.94 } : {}}
+                    transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
                   >
                     <motion.img
                       src={item.image}
@@ -132,7 +142,7 @@ const WhyChooseUs = () => {
                         !isMobile
                           ? {
                               scale: 1.05,
-                              filter: "blur(14px)",
+                              filter: "blur(12px)",
                               opacity: 0.6,
                             }
                           : {}
@@ -143,8 +153,8 @@ const WhyChooseUs = () => {
                     <motion.img
                       src={item.image}
                       alt={item.title}
-                      className="relative w-[90%] h-[90%] object-cover rounded-2xl shadow-2xl"
-                      whileHover={!isMobile ? { scale: 0.88 } : {}}
+                      className="relative w-[92%] h-[92%] object-cover rounded-xl sm:rounded-2xl shadow-2xl"
+                      whileHover={!isMobile ? { scale: 0.9 } : {}}
                       transition={{ duration: 0.45, ease: "easeOut" }}
                     />
                   </motion.div>

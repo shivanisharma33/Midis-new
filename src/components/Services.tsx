@@ -4,21 +4,21 @@ import { ArrowUpRight } from "lucide-react";
 
 const services = [
   {
-    image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d10d0123c0be15052ede_Glossy%20Tote%20Bags%20on%20Vibrant%20Background.webp",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80",
     tag: "Website",
     title: "Web Development",
     description: "Driven by a deep passion for design, we craft meaningful visuals that spark emotion and leave a powerful, lasting impression on your audience.",
     bgColor: "bg-[#f8f4f0]",
   },
   {
-    image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d1498f8548f8568bc6f7_Pastel%20Sneakers%20Display.webp",
+    image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=1600&q=80",
     tag: "SEO",
     title: "Graphic Designing",
     description: "We utilize a diverse blend of strategic channels and tailored tactics, each carefully selected and refined to effectively reach your goals.",
     bgColor: "bg-[#fff5f0]",
   },
   {
-    image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d16b259fd242a0ee6c1e_Modern%20Device%20Close-Up.webp",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80",
     tag: "Front-end",
     title: "Content Writing",
     description: "Highlighting the essential features, interactive elements, and practical functionalities that bring your idea to life.",

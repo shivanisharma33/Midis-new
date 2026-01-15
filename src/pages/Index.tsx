@@ -4,6 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import MarqueeImages from "@/components/MarqueeImages";
 // import FeaturedWorks from "@/components/FeaturedWorks";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Whymidis from "@/components/whymidis";
 import Services from "@/components/Services";
 
 import CTA from "@/components/CTA";
@@ -17,7 +18,8 @@ const Index = () => {
       <AboutSection />
       <MarqueeImages />
       {/* <FeaturedWorks /> */}
-      <WhyChooseUs />
+      <Whymidis />
+   
       <Services />
     
       <CTA />

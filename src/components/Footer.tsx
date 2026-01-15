@@ -1,132 +1,88 @@
-import { motion } from "framer-motion";
+import React from "react";
 
-const exploreLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Works", href: "/works" },
-  { label: "Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
-];
-
-const moreLinks = [
-  { label: "Contact", href: "/contact" },
-  { label: "StyleGuide", href: "/style-guide" },
-  { label: "Changelog", href: "/changelog" },
-  { label: "Licenses", href: "/licenses" },
-  { label: "Instructions", href: "/instructions" },
-];
-
-const Footer = () => {
-  const spacedTitle = "Design is Our Passion.".split("").join("    ");
-
+const Footer: React.FC = () => {
   return (
-    <footer className="bg-secondary pt-20 pb-8">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
-          <div>
-            <h5 className="text-xl font-medium mb-4">midis.</h5>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              A dynamic agency dedicated to bringing your ideas to life. Where creativity meets purpose.
-            </p>
-            <div className="flex gap-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
-                <img 
-                  src="https://cdn.prod.website-files.com/689989c2270f878736e77521/689989c2270f878736e77560_twitter.png"
-                  alt="Twitter"
-                  className="w-5 h-5"
-                />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
-                <img 
-                  src="https://cdn.prod.website-files.com/689989c2270f878736e77521/689989c2270f878736e77624_instagram-black.webp"
-                  alt="Instagram"
-                  className="w-5 h-5"
-                />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
-                <img 
-                  src="https://cdn.prod.website-files.com/689989c2270f878736e77521/689989c2270f878736e7761d_facebook-black.webp"
-                  alt="Facebook"
-                  className="w-5 h-5"
-                />
-              </a>
-            </div>
-          </div>
-
-          {/* Explore */}
-          <div>
-            <h6 className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-4">
-              Explore
-            </h6>
-            <ul className="space-y-3">
-              {exploreLinks.map((link) => (
-                <li key={link.label}>
-                  <motion.a
-                    href={link.href}
-                    className="footer-link inline-block"
-                    whileHover={{ x: 3 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {link.label.split("").map((char, i) => (
-                      <span key={i} className="inline-block">{char}</span>
-                    ))}
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* More */}
-          <div>
-            <h6 className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-4">
-              More
-            </h6>
-            <ul className="space-y-3">
-              {moreLinks.map((link) => (
-                <li key={link.label}>
-                  <motion.a
-                    href={link.href}
-                    className="footer-link inline-block"
-                    whileHover={{ x: 3 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {link.label.split("").map((char, i) => (
-                      <span key={i} className="inline-block">{char}</span>
-                    ))}
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contacts */}
-          <div>
-            <h6 className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-4">
-              Contacts
-            </h6>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <p>1st Floor, E 279, Industrial Area,
-Sector 75, S.A.S Nagar, Punjab
-160055<br />United States</p>
+    <footer className="w-full bg-white py-28">
+      {/* OUTER CONTAINER */}
+      <div className="max-w-[1400px] mx-auto">
+        {/* BLACK FOOTER CARD */}
+        <div className="bg-[#0b0b0b] rounded-[36px] px-20 py-24 text-white">
+          
+          {/* TOP GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-20 pb-24 border-b border-white/10">
             
-              <p>+91 97793 20626
-</p>
+            {/* BRAND */}
+            <div>
+              <h3 className="text-xl font-semibold mb-6">Midis.</h3>
+              <p className="text-sm text-white/70 leading-relaxed max-w-xs mb-8">
+                A dynamic agency dedicated to bringing your ideas to life.
+                Where creativity meets purpose.
+              </p>
+
+              {/* SOCIAL ICONS */}
+              <div className="flex items-center gap-6 text-white/80">
+                <span className="cursor-pointer hover:text-white transition">X</span>
+                <span className="cursor-pointer hover:text-white transition">◎</span>
+                <span className="cursor-pointer hover:text-white transition">f</span>
+              </div>
             </div>
+
+            {/* EXPLORE */}
+            <div>
+              <p className="text-xs tracking-widest text-white/40 mb-6 uppercase">
+                Explore
+              </p>
+              <ul className="space-y-4 text-sm">
+                <li>Home</li>
+                <li>About</li>
+                <li>Works</li>
+                <li>Services</li>
+                <li>Blog</li>
+              </ul>
+            </div>
+
+            {/* MORE */}
+            <div>
+              <p className="text-xs tracking-widest text-white/40 mb-6 uppercase">
+                More
+              </p>
+              <ul className="space-y-4 text-sm">
+                <li>Contact</li>
+                <li>Style Guide</li>
+                <li>Changelog</li>
+                <li>Licenses</li>
+                <li>Instructions</li>
+              </ul>
+            </div>
+
+            {/* CONTACTS */}
+            <div>
+              <p className="text-xs tracking-widest text-white/40 mb-6 uppercase">
+                Contacts
+              </p>
+              <div className="text-sm space-y-4 text-white/80">
+                <p>
+                  XYZ Times Sq, New York,
+                  <br />
+                  United States
+                </p>
+                <p>hello@midis.com</p>
+                <p>+1 023-456-789</p>
+              </div>
+            </div>
+          </div>
+
+          {/* BIG TYPOGRAPHY */}
+          <div className="pt-24">
+            <h1 className="text-[88px] md:text-[120px] lg:text-[160px] leading-[0.95] font-bold tracking-tight">
+              Design is Our
+              <br />
+              Passion.
+            </h1>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-border pt-8">
-          <p className="text-xs text-center tracking-[0.3em] text-muted-foreground mb-6">
-            {spacedTitle}
-          </p>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-muted-foreground">
-            <span>Built by <a href="#" className="hover:text-foreground transition-colors">Yves Adrales</a></span>
-            <span className="hidden md:inline">•</span>
-            <span>Powered by <a href="https://webflow.com" className="hover:text-foreground transition-colors">Webflow</a></span>
-          </div>
-        </div>
+
       </div>
     </footer>
   );

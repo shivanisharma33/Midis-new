@@ -6,9 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/Index";
 import AboutPage from "./pages/AboutPage";
-
-import NotFound from "./pages/NotFound";
 import ServicesPage from "./pages/ServicesPage";
+import BlogsPage from "./pages/Blogs";
+import ContactPage from "./pages/Contactus";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -21,14 +22,16 @@ const App = () => {
 
         <BrowserRouter>
           <Routes>
-            {/* Home Page */}
+            {/* Home */}
             <Route path="/" element={<Index />} />
 
-            {/* About Us Page */}
+            {/* Pages */}
             <Route path="/about" element={<AboutPage />} />
-            {/* About Us Page */}
             <Route path="/services" element={<ServicesPage />} />
-            {/* 404 Page - Must be last */}
+            <Route path="/blogs" element={<BlogsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+
+            {/* 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

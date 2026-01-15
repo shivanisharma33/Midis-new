@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -67,7 +69,6 @@ export default function Navbar() {
     >
       {/* ================= DESKTOP ================= */}
       <div className="hidden md:flex items-center gap-8 bg-white/80 backdrop-blur-xl rounded-full px-6 py-2 shadow-2xl border border-black/10">
-
         {/* LEFT */}
         <div className="flex items-center gap-2">
           <a href="/about" className="px-4 py-2 hover:text-coral">
@@ -139,6 +140,7 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className="flex items-center gap-2">
+          {/* WORKS */}
           <div
             className="relative"
             onMouseEnter={() => setWorksOpen(true)}
@@ -189,7 +191,11 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <a href="#contact" className="px-4 py-2 hover:text-coral">
+          <a href="/blogs" className="px-4 py-2 hover:text-coral">
+            Blogs
+          </a>
+
+          <a href="/contact" className="px-4 py-2 hover:text-coral">
             Contact
           </a>
         </div>
@@ -241,34 +247,25 @@ export default function Navbar() {
 
               <div className="px-6 pb-8 space-y-8">
                 <div className="space-y-4">
-                  <a href="/about" className="block text-2xl font-medium">About</a>
-                    <a href="/services" className="block text-2xl font-medium">Services</a>
-                  <a href="/works" className="block text-2xl font-medium">Works</a>
-                  <a href="#contact" className="block text-2xl font-medium">Contact</a>
-                </div>
-
-                <div>
-                  <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">
+                  <a href="/about" className="block text-2xl font-medium">
+                    About
+                  </a>
+                  <a href="/services" className="block text-2xl font-medium">
                     Services
-                  </p>
-                  <div className="grid grid-cols-2 gap-4">
-                    {navItems.services.map((item) => (
-                      <a
-                        key={item.label}
-                        href="/services"
-                        className="relative rounded-2xl overflow-hidden"
-                      >
-                        <img src={item.image} className="w-full h-28 object-cover" />
-                        <div className="absolute inset-0 bg-black/30 flex items-end p-3">
-                          <span className="text-white font-medium">{item.label}</span>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
+                  </a>
+                  <a href="/blogs" className="block text-2xl font-medium">
+                    Blogs
+                  </a>
+                  <a href="/works" className="block text-2xl font-medium">
+                    Works
+                  </a>
+                  <a href="/contact" className="block text-2xl font-medium">
+                    Contact
+                  </a>
                 </div>
 
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="block w-full text-center py-4 rounded-full bg-black text-white font-medium"
                 >
                   Get in Touch

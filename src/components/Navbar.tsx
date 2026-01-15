@@ -266,12 +266,13 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                <a
-                  href="#contact"
-                  className="block w-full text-center py-4 rounded-full bg-black text-white font-medium"
-                >
-                  Get in Touch
-                </a>
+               <a
+  href="/contact"
+  className="block w-full text-center py-4 rounded-full bg-black text-white font-medium"
+>
+  Get in Touch
+</a>
+
               </div>
             </motion.div>
           </>

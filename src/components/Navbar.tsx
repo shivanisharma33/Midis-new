@@ -63,7 +63,7 @@ export default function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-6 left-0 w-full z-50 flex justify-center px-4"
+      className="fixed top-0 md:top-6 left-0 w-full z-50 flex justify-center px-4"
     >
       {/* ================= DESKTOP ================= */}
       <div className="hidden md:flex items-center gap-8 bg-white/80 backdrop-blur-xl rounded-full px-6 py-2 shadow-2xl border border-black/10">
@@ -239,7 +239,6 @@ export default function Navbar() {
               </div>
 
               <div className="px-6 pb-8 space-y-8">
-                {/* UPDATED LINKS */}
                 <div className="space-y-4">
                   <a href="/about" className="block text-2xl font-medium">About</a>
                   <a href="/works" className="block text-2xl font-medium">Works</a>

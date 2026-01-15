@@ -4,7 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import MarqueeImages from "@/components/MarqueeImages";
 // import FeaturedWorks from "@/components/FeaturedWorks";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Whymidis from "@/components/whymidis";
+
 import Services from "@/components/Services";
 
 
@@ -19,8 +19,8 @@ const Index = () => {
       <AboutSection />
       <MarqueeImages />
       {/* <FeaturedWorks /> */}
-      <Whymidis />
-   
+  
+    <WhyChooseUs />
       <Services />
     
       <CTA />

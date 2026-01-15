@@ -7,6 +7,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Whymidis from "@/components/whymidis";
 import Services from "@/components/Services";
 
+
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 

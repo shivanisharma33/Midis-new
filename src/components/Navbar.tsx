@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "@/assets/midis-logo.png";
@@ -59,6 +59,11 @@ export default function Navbar() {
   const [worksOpen, setWorksOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  /* ===== LOCK BODY SCROLL ON MOBILE MENU OPEN ===== */
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+  }, [mobileOpen]);
 
   return (
     <motion.nav
@@ -203,8 +208,8 @@ export default function Navbar() {
 
       {/* ================= MOBILE BAR ================= */}
       <div className="md:hidden fixed top-4 left-1/2 -translate-x-1/2 w-[94%] bg-white/90 backdrop-blur-xl rounded-full px-4 py-3 flex items-center justify-between border border-black/10 z-50">
-        <button onClick={() => setMobileOpen(true)}>
-          <Menu />
+        <button onClick={() => setMobileOpen(true)} className="p-2">
+          <Menu size={26} />
         </button>
 
         <a
@@ -215,7 +220,7 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* ================= MOBILE DRAWER ================= */}
+      {/* ================= FULL SCREEN MOBILE MENU ================= */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -224,49 +229,45 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[998]"
+              className="fixed inset-0 bg-black/40 backdrop-blur-md z-[998]"
             />
 
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
-              transition={{ type: "spring", stiffness: 120, damping: 18 }}
-              className="md:hidden fixed bottom-0 left-0 right-0 z-[999] bg-white rounded-t-[32px] shadow-2xl"
+              transition={{ type: "spring", stiffness: 110, damping: 18 }}
+              className="fixed inset-0 z-[999] bg-white flex flex-col"
             >
-              <div className="flex justify-center pt-3">
-                <span className="w-12 h-1.5 rounded-full bg-black/20" />
-              </div>
-
-              <div className="flex justify-between items-center px-6 py-5">
-                <span className="text-lg font-semibold">Menu</span>
+              {/* Header */}
+              <div className="flex justify-between items-center px-6 py-6 border-b">
+                <span className="text-xl font-semibold">Menu</span>
                 <button onClick={() => setMobileOpen(false)}>
-                  <X />
+                  <X size={28} />
                 </button>
               </div>
 
-              <div className="px-6 pb-8 space-y-8">
-                <div className="space-y-4">
-                  <a href="/about" className="block text-2xl font-medium">
-                    About
-                  </a>
-                  <a href="/services" className="block text-2xl font-medium">
-                    Services
-                  </a>
-                  <a href="/blogs" className="block text-2xl font-medium">
-                    Blogs
-                  </a>
-                  <a href="/works" className="block text-2xl font-medium">
-                    Works
-                  </a>
-                  <a href="/contact" className="block text-2xl font-medium">
-                    Contact
-                  </a>
-                </div>
+              {/* Links */}
+              <div className="flex-2 flex flex-col justify-center px-8 space-y-10">
+                {["About", "Services", "Works", "Blogs", "Contact"].map(
+                  (item) => (
+                    <a
+                      key={item}
+                      href={`/${item.toLowerCase()}`}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-3xl font-medium tracking-tight"
+                    >
+                      {item}
+                    </a>
+                  )
+                )}
+              </div>
 
+              {/* CTA */}
+              <div className="px-8 pb-10">
                 <a
                   href="/contact"
-                  className="block w-full text-center py-4 rounded-full bg-black text-white font-medium"
+                  className="block w-full text-center py-5 rounded-full bg-black text-white text-lg font-medium"
                 >
                   Get in Touch
                 </a>

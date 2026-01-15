@@ -169,119 +169,288 @@ const Page: React.FC = () => {
   return (
     <>
       {/* ================= WHAT WE DO ================= */}
-      <section
-        ref={whatWeDoRef}
-        className="w-full min-h-screen bg-white overflow-hidden flex flex-col lg:flex-row"
-      >
-        <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-12 lg:px-[90px]">
-          <span className="text-sm tracking-widest text-gray-400 mb-6">
-            {whatWeDoItems[activeIndex].number}
-          </span>
+     <section
+  ref={whatWeDoRef}
+  className="
+    w-full
+    min-h-[100svh]
+    bg-white
+    overflow-hidden
+    flex
+    flex-col
+    lg:flex-row
+  "
+>
+  {/* ================= LEFT CONTENT ================= */}
+  <div
+    className="
+      w-full
+      lg:w-1/2
+      flex
+      flex-col
+      justify-center
+      px-5
+      sm:px-8
+      md:px-12
+      lg:px-[90px]
+      py-16
+      sm:py-20
+      lg:py-0
+    "
+  >
+    <span className="text-xs sm:text-sm tracking-widest text-gray-400 mb-5">
+      {whatWeDoItems[activeIndex].number}
+    </span>
 
-          <h2 className="text-black font-extrabold tracking-tight text-[36px] sm:text-[44px] md:text-[54px] lg:text-[64px] leading-[1.05]">
-            {whatWeDoItems[activeIndex].label}
-          </h2>
+    <h2
+      className="
+        text-black
+        font-extrabold
+        tracking-tight
+        leading-[1.05]
+        text-[30px]
+        sm:text-[38px]
+        md:text-[48px]
+        lg:text-[60px]
+        xl:text-[64px]
+      "
+    >
+      {whatWeDoItems[activeIndex].label}
+    </h2>
 
-          <p className="mt-6 max-w-lg text-gray-600 text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.75]">
-            {whatWeDoItems[activeIndex].description}
-          </p>
-        </div>
+    <p
+      className="
+        mt-5
+        sm:mt-6
+        max-w-xl
+        text-gray-600
+        text-[14px]
+        sm:text-[15px]
+        md:text-[16px]
+        lg:text-[17px]
+        leading-[1.75]
+      "
+    >
+      {whatWeDoItems[activeIndex].description}
+    </p>
+  </div>
 
-        <div className="w-full lg:w-1/2 relative overflow-hidden h-[320px] sm:h-[420px] lg:h-auto">
-          {whatWeDoItems.map((item, index) => (
-            <img
-              key={index}
-              src={item.image}
-              alt={item.label}
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${
-                activeIndex === index
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-[1.05]"
-              }`}
-            />
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-l from-black/20 to-transparent pointer-events-none" />
-        </div>
-      </section>
+  {/* ================= RIGHT IMAGE ================= */}
+  <div
+    className="
+      w-full
+      lg:w-1/2
+      relative
+      overflow-hidden
+      h-[260px]
+      sm:h-[360px]
+      md:h-[440px]
+      lg:h-auto
+      lg:min-h-[100svh]
+    "
+  >
+    {whatWeDoItems.map((item, index) => (
+      <img
+        key={index}
+        src={item.image}
+        alt={item.label}
+        className={`
+          absolute inset-0
+          w-full h-full
+          object-cover
+          transition-all
+          duration-700
+          ease-out
+          ${
+            activeIndex === index
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-[1.06]"
+          }
+        `}
+      />
+    ))}
+
+    {/* Gradient Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-l from-black/25 to-transparent pointer-events-none" />
+  </div>
+</section>
+
 
       {/* ================= WORKFLOW ================= */}
-      <section
-        ref={workflowRef}
+     <section
+  ref={workflowRef}
+  className="
+    w-full
+    min-h-[100svh]
+    bg-[#0b0b0b]
+    overflow-hidden
+    relative
+    flex
+    flex-col
+    lg:flex-row
+    items-start
+    lg:items-center
+  "
+>
+  {/* ================= LEFT HEADING ================= */}
+  <div
+    className="
+      relative
+      lg:absolute
+      lg:left-[20px]
+      lg:top-1/2
+      lg:-translate-y-1/2
+      px-5
+      sm:px-8
+      md:px-12
+      lg:px-0
+      z-10
+      max-w-[520px]
+      text-left
+    "
+  >
+    <h1
+      className="
+        text-white
+        font-extrabold
+        tracking-tight
+        leading-[1]
+        text-[32px]
+        sm:text-[44px]
+        md:text-[56px]
+        lg:text-[84px]
+        xl:text-[96px]
+        whitespace-normal
+      "
+    >
+      What You’ll Gain
+      <span className="block">With Midis</span>
+    </h1>
+  </div>
+
+  {/* ================= CARD TRACK ================= */}
+  <div
+    ref={workflowTrackRef}
+    className="
+      w-full
+      flex
+      flex-col
+      lg:flex-row
+      gap-6
+      sm:gap-8
+      md:gap-10
+      lg:gap-[64px]
+      px-5
+      sm:px-8
+      md:px-12
+      lg:pl-[560px]
+      lg:pr-[140px]
+      pt-16
+      sm:pt-20
+      lg:pt-0
+      pb-20
+      lg:pb-0
+    "
+  >
+    {workflowCards.map((item, index) => (
+      <div
+        key={index}
         className="
-          w-full min-h-screen bg-[#0b0b0b]
-          overflow-hidden relative
-          flex flex-col lg:flex-row
-          items-start lg:items-center
+          workflow-card
+          w-full
+          lg:flex-shrink-0
+          mx-auto
         "
+        style={{ maxWidth: "520px" }}
       >
-        {/* LEFT HEADING */}
         <div
           className="
-            lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2
-            px-6 md:px-12 lg:px-0
-            z-5 max-w-[520px]
-            text-left [direction:ltr] overflow-visible
+            relative
+            h-auto
+            lg:h-[460px]
+            rounded-[28px]
+            sm:rounded-[32px]
+            px-6
+            sm:px-8
+            md:px-10
+            lg:px-[52px]
+            py-8
+            sm:py-10
+            md:py-12
+            lg:py-[56px]
+            bg-white/95
+            backdrop-blur-xl
+            shadow-[0_30px_120px_rgba(0,0,0,0.45)]
+            border
+            border-black/5
+            transition-all
+            duration-500
+            ease-out
+            hover:-translate-y-[6px]
+            sm:hover:-translate-y-[8px]
+            hover:shadow-[0_70px_180px_rgba(0,0,0,0.55)]
           "
         >
-        
+          {/* Index */}
+          <span
+            className="
+              absolute
+              top-5
+              right-5
+              sm:top-6
+              sm:right-6
+              text-[36px]
+              sm:text-[42px]
+              lg:text-[48px]
+              font-extrabold
+              text-black/5
+            "
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
 
-          <h1 className="text-white font-extrabold tracking-tight leading-[0.95] text-[40px] sm:text-[52px] md:text-[64px] lg:text-[96px] whitespace-normal">
-            What You’ll Gain
-            <span className="block">With Midis</span>
-          </h1>
+          {/* Title */}
+          <h2
+            className="
+              font-bold
+              text-black
+              tracking-tight
+              text-[20px]
+              sm:text-[22px]
+              md:text-[24px]
+              lg:text-[30px]
+            "
+          >
+            {item.heading}
+          </h2>
 
-         
+          {/* Description */}
+          <p
+            className="
+              mt-4
+              sm:mt-5
+              text-gray-700
+              text-[14px]
+              sm:text-[15px]
+              md:text-[16px]
+              leading-[1.75]
+            "
+          >
+            {item.description}
+          </p>
+
+          {/* Footer */}
+          <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-gray-200">
+            <p className="text-xs sm:text-sm text-gray-500">
+              {item.sub}
+            </p>
+          </div>
         </div>
+      </div>
+    ))}
+  </div>
+</section>
 
-        {/* CARD TRACK */}
-        <div
-          ref={workflowTrackRef}
-          className="
-            w-full flex flex-col lg:flex-row
-            gap-8 sm:gap-10 lg:gap-[64px]
-            px-6 md:px-12
-            lg:pl-[560px] lg:pr-[140px]
-            pb-24 lg:pb-0
-          "
-        >
-          {workflowCards.map((item, index) => (
-            <div
-              key={index}
-              className="workflow-card w-full lg:flex-shrink-0"
-              style={{ maxWidth: "520px" }}
-            >
-              <div className="
-                relative h-auto lg:h-[460px]
-                rounded-[32px]
-                px-8 sm:px-10 lg:px-[52px]
-                py-10 sm:py-12 lg:py-[56px]
-                bg-white/95 backdrop-blur-xl
-                shadow-[0_30px_120px_rgba(0,0,0,0.45)]
-                border border-black/5
-                transition-all duration-500 ease-out
-                hover:-translate-y-[8px]
-                hover:shadow-[0_70px_180px_rgba(0,0,0,0.55)]
-              ">
-                <span className="absolute top-6 right-6 text-[48px] font-extrabold text-black/5">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <h2 className="font-bold text-black tracking-tight text-[22px] sm:text-[24px] lg:text-[30px]">
-                  {item.heading}
-                </h2>
-
-                <p className="mt-5 text-gray-700 leading-[1.75]">
-                  {item.description}
-                </p>
-
-                <div className="mt-10 pt-6 border-t border-gray-200">
-                  <p className="text-sm text-gray-500">{item.sub}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
     </>
   );
 };

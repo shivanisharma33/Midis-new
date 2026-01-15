@@ -191,6 +191,12 @@ export default function Navbar() {
           <a href="/contact" className="px-4 py-2 hover:text-coral">
             Contact
           </a>
+              <a href="/Blogs" className="px-4 py-2 hover:text-coral">
+            Blogs
+          </a>
+           <a href="/contact" className="px-4 py-2 hover:text-coral">
+            Contact
+          </a>
         </div>
       </div>
 

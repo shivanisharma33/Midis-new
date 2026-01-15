@@ -128,13 +128,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* LOGO */}
-        <a
-          href="/"
-          className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden"
-        >
-          <img src={logo} alt="MIDIS Logo" className="w-full h-full object-contain" />
-        </a>
+   
 
         {/* RIGHT */}
         <div className="flex items-center gap-2">
@@ -187,7 +181,13 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
-
+     {/* LOGO */}
+        <a
+          href="/"
+          className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden"
+        >
+          <img src={logo} alt="MIDIS Logo" className="w-full h-full object-contain" />
+        </a>
           <a href="/contact" className="px-4 py-2 hover:text-coral">
             Contact
           </a>

@@ -4,6 +4,9 @@ import Footer from "@/components/Footer";
 import React from "react";
 import { motion } from "framer-motion";
 
+import gradientDataGraph from "@/assets/Gradient Data Graph.png";
+import artisticDesigners from "@/assets/Artistic Designers Modern Workspace.png";
+
 /* ================= BLOG DATA ================= */
 const blogs = [
   {
@@ -11,7 +14,7 @@ const blogs = [
     title: "How to Build a Digital Strategy That Scales",
     excerpt:
       "A practical framework for building long-term digital strategies that grow with your business.",
-    image: "src/assets/Gradient Data Graph.png",
+    image: gradientDataGraph,
     date: "Feb 10, 2026",
     category: "Strategy",
     featured: true,
@@ -21,7 +24,7 @@ const blogs = [
     title: "SEO Trends That Will Matter in 2026",
     excerpt:
       "From AI search to content depth — here’s what brands must focus on to stay ahead.",
-    image: "src/assets/Artistic Designers Modern Workspace.png",
+    image: artisticDesigners,
     date: "Jan 28, 2026",
     category: "SEO",
   },

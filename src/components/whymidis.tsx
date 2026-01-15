@@ -4,6 +4,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import vibrantStudio from "@/assets/Vibrant Digital Artists Studio.png";
+import creativePhotographer from "@/assets/Creative Photographer in Colorful Setting.png";
+import futuristicVR from "@/assets/Futuristic VR Experience (1).png";
+import futuristicPortrait from "@/assets/Futuristic Portrait.png";
+
 gsap.registerPlugin(ScrollTrigger);
 
 /* ================= WORKFLOW DATA ================= */
@@ -41,28 +46,28 @@ const whatWeDoItems = [
     label: "Global perspective",
     description:
       "We understand how people behave online across cultures and regions. Our strategies adapt to audiences — never copied, never generic.",
-    image: "src/assets/Vibrant Digital Artists Studio.png",
+    image: vibrantStudio,
   },
   {
     number: "02",
     label: "Return on investment",
     description:
       "We don’t celebrate likes or impressions. Every campaign is designed to deliver measurable leads, sales, and revenue growth.",
-    image: "src/assets/Creative Photographer in Colorful Setting.png",
+    image: creativePhotographer,
   },
   {
     number: "03",
     label: "Real collaboration",
     description:
       "We work alongside your team, not behind reports. Strategies evolve as markets change — and we adapt with you.",
-    image: "src/assets/Futuristic VR Experience (1).png",
+    image: futuristicVR,
   },
   {
     number: "04",
     label: "Balance of ideas and data",
     description:
       "Bold ideas capture attention, but data keeps us grounded. Every decision is backed by insights, testing, and performance metrics.",
-    image: "src/assets/Futuristic Portrait.png",
+    image: futuristicPortrait,
   },
 ];
 

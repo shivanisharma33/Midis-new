@@ -1,14 +1,23 @@
 import { motion } from "framer-motion";
 
+import img13 from "@/assets/port/13.png";
+import img18 from "@/assets/port/18.png";
+import img44 from "@/assets/port/44.png";
+import img25 from "@/assets/port/25.png";
+import img19 from "@/assets/port/19.png";
+import img9 from "@/assets/port/9.png";
+import img16 from "@/assets/port/16.png";
+import img14 from "@/assets/port/14.png";
+
 const images = [
-  "src/assets/port/13.png",
-  "src/assets/port/18.png",
-  "src/assets/port/44.png",
-  "src/assets/port/25.png",
-  "src/assets/port/19.png",
-  "src/assets/port/9.png",
-  "src/assets/port/16.png",
-  "src/assets/port/14.png",
+  img13,
+  img18,
+  img44,
+  img25,
+  img19,
+  img9,
+  img16,
+  img14,
 ];
 
 const MarqueeImages = () => {

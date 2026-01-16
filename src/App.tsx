@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import BlogsPage from "./pages/Blogs";
 import ContactPage from "./pages/Contactus";
+import TeamPage from "./pages/TeamPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/team" element={<TeamPage />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -66,10 +68,20 @@ export default function Navbar() {
       className="fixed top-0 md:top-6 left-0 w-full z-50 flex justify-center px-4"
     >
       {/* ================= DESKTOP ================= */}
-      <div className="hidden md:flex items-center gap-8 bg-white/80 backdrop-blur-xl rounded-full px-6 py-2 shadow-2xl border border-black/10">
+      <div className="hidden md:flex items-center justify-between gap-10 bg-white/70 backdrop-blur-2xl rounded-full px-10 py-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] border border-black/10">
         {/* LEFT */}
         <div className="flex items-center gap-2">
-          <a href="/about" className="px-4 py-2 hover:text-coral">
+          <a
+            href="/team"
+            className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors"
+          >
+            Team
+          </a>
+
+          <a
+            href="/about"
+            className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors"
+          >
             About
           </a>
 
@@ -84,7 +96,7 @@ export default function Navbar() {
           >
             <a
               href="/services"
-              className="px-4 py-2 flex items-center gap-1 hover:text-coral"
+              className="px-4 py-2 text-sm font-medium flex items-center gap-1 hover:text-coral transition-colors"
             >
               Services <ChevronDown className="w-4 h-4" />
             </a>
@@ -92,10 +104,10 @@ export default function Navbar() {
             <AnimatePresence>
               {servicesOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[280px] bg-white/90 backdrop-blur-2xl rounded-3xl p-4 border border-black/10"
+                  exit={{ opacity: 0, y: 12 }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-5 w-[300px] bg-white/90 backdrop-blur-2xl rounded-3xl p-4 border border-black/10 shadow-xl"
                 >
                   <div className="flex gap-4">
                     {hoveredItem && (
@@ -106,16 +118,16 @@ export default function Navbar() {
                             (i) => i.label === hoveredItem
                           )?.image
                         }
-                        className="w-32 h-32 rounded-xl object-cover"
+                        className="w-32 h-32 rounded-2xl object-cover"
                       />
                     )}
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-1">
                       {navItems.services.map((item) => (
                         <a
                           key={item.label}
                           href="/services"
                           onMouseEnter={() => setHoveredItem(item.label)}
-                          className="px-4 py-2 hover:bg-black/5 rounded-lg"
+                          className="px-4 py-2 rounded-xl text-sm hover:bg-black/5 transition-colors"
                         >
                           {item.label}
                         </a>
@@ -128,7 +140,13 @@ export default function Navbar() {
           </div>
         </div>
 
-   
+        {/* LOGO */}
+        <a
+          href="/"
+          className="w-11 h-11 rounded-full bg-black flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+        >
+          <img src={logo} alt="MIDIS Logo" className="w-full h-full object-contain" />
+        </a>
 
         {/* RIGHT */}
         <div className="flex items-center gap-2">
@@ -140,17 +158,17 @@ export default function Navbar() {
               setHoveredItem(null);
             }}
           >
-            <button className="px-4 py-2 flex items-center gap-1 hover:text-coral">
+            <button className="px-4 py-2 text-sm font-medium flex items-center gap-1 hover:text-coral transition-colors">
               Works <ChevronDown className="w-4 h-4" />
             </button>
 
             <AnimatePresence>
               {worksOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute top-full right-0 mt-4 w-[260px] bg-white/90 backdrop-blur-2xl rounded-3xl p-4 border border-black/10"
+                  exit={{ opacity: 0, y: 12 }}
+                  className="absolute top-full right-0 mt-5 w-[280px] bg-white/90 backdrop-blur-2xl rounded-3xl p-4 border border-black/10 shadow-xl"
                 >
                   <div className="flex gap-4">
                     {hoveredItem && (
@@ -161,16 +179,16 @@ export default function Navbar() {
                             (i) => i.label === hoveredItem
                           )?.image
                         }
-                        className="w-32 h-32 rounded-xl object-cover"
+                        className="w-32 h-32 rounded-2xl object-cover"
                       />
                     )}
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-1">
                       {navItems.works.map((item) => (
                         <a
                           key={item.label}
                           href="/works"
                           onMouseEnter={() => setHoveredItem(item.label)}
-                          className="px-4 py-2 hover:bg-black/5 rounded-lg"
+                          className="px-4 py-2 rounded-xl text-sm hover:bg-black/5 transition-colors"
                         >
                           {item.label}
                         </a>
@@ -181,38 +199,28 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
-     {/* LOGO */}
-        <a
-          href="/"
-          className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden"
-        >
-          <img src={logo} alt="MIDIS Logo" className="w-full h-full object-contain" />
-        </a>
-          <a href="/contact" className="px-4 py-2 hover:text-coral">
+
+          <a href="/contact" className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors">
             Contact
           </a>
-              <a href="/Blogs" className="px-4 py-2 hover:text-coral">
+
+          <a href="/blogs" className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors">
             Blogs
           </a>
-        
         </div>
       </div>
 
-      {/* ================= MOBILE BAR ================= */}
+      {/* ================= MOBILE ================= */}
       <div className="md:hidden fixed top-4 left-1/2 -translate-x-1/2 w-[94%] bg-white/90 backdrop-blur-xl rounded-full px-4 py-3 flex items-center justify-between border border-black/10 z-50">
         <button onClick={() => setMobileOpen(true)}>
           <Menu />
         </button>
 
-        <a
-          href="/"
-          className="w-9 h-9 rounded-full bg-black flex items-center justify-center overflow-hidden"
-        >
+        <a href="/" className="w-9 h-9 rounded-full bg-black flex items-center justify-center overflow-hidden">
           <img src={logo} alt="MIDIS Logo" className="w-full h-full object-contain" />
         </a>
       </div>
 
-      {/* ================= MOBILE DRAWER ================= */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -244,6 +252,7 @@ export default function Navbar() {
 
               <div className="px-6 pb-8 space-y-8">
                 <div className="space-y-4">
+                  <a href="/team" className="block text-2xl font-medium">Team</a>
                   <a href="/about" className="block text-2xl font-medium">About</a>
                   <a href="/works" className="block text-2xl font-medium">Works</a>
                   <a href="/blogs" className="block text-2xl font-medium">Blogs</a>
@@ -263,20 +272,21 @@ export default function Navbar() {
                       >
                         <img src={item.image} className="w-full h-28 object-cover" />
                         <div className="absolute inset-0 bg-black/30 flex items-end p-3">
-                          <span className="text-white font-medium">{item.label}</span>
+                          <span className="text-white font-medium">
+                            {item.label}
+                          </span>
                         </div>
                       </a>
                     ))}
                   </div>
                 </div>
 
-               <a
-  href="/contact"
-  className="block w-full text-center py-4 rounded-full bg-black text-white font-medium"
->
-  Get in Touch
-</a>
-
+                <a
+                  href="/contact"
+                  className="block w-full text-center py-4 rounded-full bg-black text-white font-medium"
+                >
+                  Get in Touch
+                </a>
               </div>
             </motion.div>
           </>

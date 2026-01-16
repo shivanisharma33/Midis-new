@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
@@ -5,10 +7,31 @@ import aboutImg from "../assets/Futuristic VR Experience (1).png";
 import AboutSection from "@/components/AboutSection";
 import TeamSection from "@/components/TeamSection";
 import ReasonsSection from "../components/ReasonsSection";
+import Services from "@/components/Services";
 import Footer from "@/components/Footer";
 
+/* ================= TEXT REVEAL ANIMATION ================= */
 
-import Services from "@/components/Services";
+const textContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const textLine = {
+  hidden: { y: 80, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.9,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 const AboutPage: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -18,63 +41,97 @@ const AboutPage: React.FC = () => {
     offset: ["start start", "end start"],
   });
 
-  // Image zoom
+  // Image zoom on scroll
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.4]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
-
-  // 👉 Bottom-right text animation
-  const textOpacity = useTransform(scrollYProgress, [0.2, 0.6], [0, 1]);
-  const textY = useTransform(scrollYProgress, [0.2, 0.6], [40, 0]);
 
   return (
     <>
       <Navbar />
 
-      {/* ================= HERO ZOOM SECTION ================= */}
-      <section ref={heroRef} className="relative h-[200vh] w-full bg-black">
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
-          <motion.img
-            src={aboutImg}
-            alt="About Hero"
-            style={{ scale, opacity }}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+      {/* ================= INTERACTIVE GRID HERO ================= */}
+   {/* ================= INTERACTIVE GRID HERO ================= */}
+<section ref={heroRef} className="relative h-[200vh] bg-black">
+  <div className="sticky top-0 h-screen overflow-hidden">
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/30" />
+    {/* FULL WIDTH IMAGE */}
+    <motion.div
+      style={{ scale, opacity }}
+      className="absolute inset-0"
+    >
+      <img
+        src={aboutImg}
+        alt="About visual"
+        className="h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/50" />
+    </motion.div>
 
-          {/* Main Title */}
-          <div className="relative z-10 flex h-full items-center px-8 lg:px-20">
-            <h1 className="text-white text-[64px] md:text-[88px] lg:text-[110px] font-bold tracking-tight leading-none">
-              ABOUT US
-            </h1>
-          </div>
+    {/* CENTERED CONTENT */}
+    <div className="relative z-10 h-full flex items-center justify-center">
+      <div className="px-6 sm:px-10 max-w-3xl text-center">
 
-          {/* 👉 BOTTOM RIGHT SCROLL TEXT */}
-          <motion.div
-            style={{ opacity: textOpacity, y: textY }}
-            className="absolute bottom-10 right-8 lg:right-20 z-20 max-w-sm"
+        {/* TEXT REVEAL HEADLINE */}
+        <motion.div
+          variants={textContainer}
+          initial="hidden"
+          animate="show"
+          className="overflow-hidden"
+        >
+          <motion.h1
+            variants={textLine}
+            className="
+              text-white font-semibold
+              text-[clamp(48px,6.5vw,96px)]
+              leading-[1.05]
+            "
           >
-            <p className="text-white/90 text-sm leading-relaxed">
-              We design immersive digital experiences that blend creativity,
-              technology, and strategy — shaping brands that feel futuristic,
-              bold, and unforgettable.
-            </p>
-          </motion.div>
+            A Creative Studio
+          </motion.h1>
+
+          <motion.h1
+            variants={textLine}
+            className="
+              text-white font-semibold
+              text-[clamp(48px,6.5vw,96px)]
+              leading-[1.05]
+            "
+          >
+            Global Mindset.
+          </motion.h1>
+        </motion.div>
+
+        {/* CTA */}
+        <div className="mt-14 flex justify-center gap-10">
+          <button className="text-sm text-white font-medium border-b border-white/40 pb-1 hover:border-white transition">
+            Start a Project
+          </button>
+
+          <button className="text-sm text-white/60 hover:text-white transition">
+            Meet the Team →
+          </button>
         </div>
-      </section>
 
-  
+      </div>
+    </div>
 
+    {/* SCROLL INDICATOR */}
+    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest">
+      SCROLL
+    </div>
+  </div>
+</section>
+
+
+      {/* ================= REST OF PAGE ================= */}
       <section className="w-full bg-white px-8 lg:px-20 py-28">
         <AboutSection />
       </section>
+
       <TeamSection />
-          {/* WHY CHOOSE MIDIS (GSAP SECTION) */}
-  <ReasonsSection />
- 
+      <ReasonsSection />
       <Services />
-       <Footer />
+      <Footer />
     </>
   );
 };

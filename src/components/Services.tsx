@@ -3,32 +3,39 @@ import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 const services = [
+    {
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80",
+    tag: "Website",
+    title: "Web Design",
+    description: "Your website is like a first handshake. If it feels sloppy, people walk away. Our web design approach is clean, mobile-friendly, and always user-focused. Visitors should feel welcome, not confused.",
+    bgColor: "bg-[#f8f4f0]",
+  },
   {
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80",
     tag: "Website",
     title: "Web Development",
-    description: "Driven by a deep passion for design, we craft meaningful visuals that spark emotion and leave a powerful, lasting impression on your audience.",
+    description: "A website’s design might catch attention, but development keeps it alive. We build secure, scalable, and fast-loading sites—whether it’s e-commerce, a business portal, or something custom. Think of it as giving your brand a strong digital backbone.",
     bgColor: "bg-[#f8f4f0]",
   },
   {
     image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=1600&q=80",
     tag: "SEO",
     title: "Graphic Designing",
-    description: "We utilize a diverse blend of strategic channels and tailored tactics, each carefully selected and refined to effectively reach your goals.",
+    description: "People remember visuals before they remember words. Our graphic design services—logos, brand kits, social media visuals—make sure your business is instantly recognisable. Consistency is the secret to trust.",
     bgColor: "bg-[#fff5f0]",
   },
   {
     image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80",
     tag: "Front-end",
     title: "Content Writing",
-    description: "Highlighting the essential features, interactive elements, and practical functionalities that bring your idea to life.",
+    description: "Words create trust. Blogs, landing pages, ads—we write content that feels natural but is also optimised for search engines. The trick is to write for humans first and Google second. That’s exactly how we do it.",
     bgColor: "bg-[#f0f5ff]",
   },
   {
     image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d19782c018e44a110307_Modern%20Elegance_%20Tech%20%26%20Texture.webp",
     tag: "Business",
     title: "Email Marketing",
-    description: "A thoughtful craft rooted in storytelling and design—shaping perceptions, stirring emotions, and curating meaningful experiences.",
+    description: "People check their inbox every day. That’s why email marketing is still one of the most powerful tools in digital. We create campaigns that feel personal and relevant—more like a conversation than a sales pitch.",
     bgColor: "bg-[#f5f0ff]",
   },
 ];
@@ -101,16 +108,26 @@ const Services = () => {
     <section ref={containerRef} className="py-24 lg:py-32 bg-secondary/30">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
-        >
-          <span className="text-[40px]   uppercase text-black font-semibold leading-tight">
-            Services We're Passionate About
-          </span>
-        </motion.div>
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+  className="text-center mb-16"
+>
+  {/* Kicker */}
+  <span className="block text-xs uppercase tracking-[0.35em] text-neutral-400 mb-4">
+    Our Expertise
+  </span>
+
+  {/* Heading */}
+  <h2 className="text-[42px] sm:text-[48px] lg:text-[56px] font-semibold tracking-tight leading-[1.05]">
+    What We{" "}
+    <span className="text-orange-500">
+      Do Best
+    </span>
+  </h2>
+</motion.div>
+
 
         <div className="relative space-y-8">
           {services.map((service, index) => (

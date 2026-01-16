@@ -1,5 +1,9 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+"use client";
+
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+/* ================= DATA ================= */
 
 const reasons = [
   {
@@ -36,129 +40,113 @@ const reasons = [
   },
 ];
 
-const WhyChooseUs = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+/* ================= COMPONENT ================= */
 
+const WhyChooseUs = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 768px)");
     setIsMobile(media.matches);
+
     const listener = () => setIsMobile(media.matches);
     media.addEventListener("change", listener);
+
     return () => media.removeEventListener("change", listener);
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden"
-    >
-      {/* Background */}
+    <section className="relative py-28 sm:py-32 lg:py-40 bg-white overflow-hidden">
+      {/* Soft background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-neutral-50 to-white" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        {/* HEADER */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        {/* ================= HEADER ================= */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mb-16 sm:mb-20 lg:mb-28"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-24"
         >
-          <h2 className="text-[36px] sm:text-[44px] lg:text-[56px] font-semibold tracking-tight leading-tight">
-            Why Midis
-            <br />
-            and Not Someone Else?
-          </h2>
+          <span className="block mb-4 text-xs uppercase tracking-[0.4em] text-neutral-400">
+            Why Choose Midis
+          </span>
 
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-neutral-600 leading-relaxed">
-            There are many agencies. What sets us apart is not noise or promises,
-            but how we think, collaborate, and deliver measurable growth.
+          <motion.h2
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[40px] sm:text-[50px] lg:text-[62px] font-semibold tracking-tight leading-[1.05]"
+          >
+            Built for{" "}
+            <span className="text-orange-500">Growth</span>
+            <br />
+            <span className="text-neutral-700 font-normal">
+              Not Empty Promises
+            </span>
+          </motion.h2>
+
+          <p className="mt-6 text-lg text-neutral-600 leading-relaxed">
+            Anyone can offer services. We build long-term partnerships focused on
+            clarity, performance, and measurable outcomes.
           </p>
         </motion.div>
 
-        {/* CONTENT */}
-        <div className="space-y-20 sm:space-y-28 lg:space-y-36">
+        {/* ================= CONTENT ================= */}
+        <div className="space-y-32">
           {reasons.map((item, index) => {
             const reverse = index % 2 !== 0;
+            const fromX = reverse ? 140 : -140;
 
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                initial={{ opacity: 0, x: fromX }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
                 transition={{
                   duration: 0.9,
                   ease: [0.16, 1, 0.3, 1],
-                  delay: index * 0.12,
                 }}
-                className={`
-                  grid
-                  grid-cols-1
-                  lg:grid-cols-2
-                  gap-12
-                  lg:gap-20
-                  items-center
-                `}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center"
               >
                 {/* TEXT */}
-                <div className={`${reverse ? "lg:order-2" : ""}`}>
-                  <span className="text-xs uppercase tracking-[0.3em] text-neutral-400">
+                <div className={reverse ? "lg:order-2" : ""}>
+                  <span className="text-xs uppercase tracking-[0.35em] text-orange-500">
                     {item.eyebrow}
                   </span>
 
-                  <h3 className="mt-4 text-2xl sm:text-3xl font-medium tracking-tight">
+                  <h3 className="mt-4 text-2xl sm:text-3xl font-medium tracking-tight text-neutral-900">
                     {item.title}
                   </h3>
 
-                  <p className="mt-4 sm:mt-6 text-base sm:text-lg text-neutral-600 leading-relaxed max-w-xl">
+                  <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-xl">
                     {item.description}
                   </p>
                 </div>
 
                 {/* IMAGE */}
-                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-100">
-                  <motion.div
-                    className="
-                      relative
-                      w-full
-                      h-[240px]
-                      sm:h-[320px]
-                      md:h-[380px]
-                      lg:h-[420px]
-                      flex
-                      items-center
-                      justify-center
-                    "
-                    whileHover={!isMobile ? { scale: 0.94 } : {}}
-                    transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-                  >
-                    <motion.img
-                      src={item.image}
-                      alt=""
-                      className="absolute inset-0 w-full h-full object-cover"
-                      whileHover={
-                        !isMobile
-                          ? {
-                              scale: 1.05,
-                              filter: "blur(12px)",
-                              opacity: 0.6,
-                            }
-                          : {}
-                      }
-                      transition={{ duration: 0.45, ease: "easeOut" }}
-                    />
-
-                    <motion.img
-                      src={item.image}
-                      alt={item.title}
-                      className="relative w-[92%] h-[92%] object-cover rounded-xl sm:rounded-2xl shadow-2xl"
-                      whileHover={!isMobile ? { scale: 0.9 } : {}}
-                      transition={{ duration: 0.45, ease: "easeOut" }}
-                    />
-                  </motion.div>
-                </div>
+                <motion.div
+                  className="
+                    relative
+                    rounded-3xl
+                    overflow-hidden
+                    bg-neutral-100
+                    shadow-[0_30px_80px_-30px_rgba(0,0,0,0.3)]
+                  "
+                  whileHover={!isMobile ? { scale: 0.97 } : {}}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  <motion.img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-[260px] sm:h-[340px] lg:h-[420px] object-cover"
+                    whileHover={!isMobile ? { scale: 1.08 } : {}}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  />
+                </motion.div>
               </motion.div>
             );
           })}

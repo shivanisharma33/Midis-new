@@ -1,8 +1,9 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import React from "react";
 import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 import gradientDataGraph from "@/assets/Gradient Data Graph.png";
 import artisticDesigners from "@/assets/Artistic Designers Modern Workspace.png";
@@ -34,7 +35,7 @@ const blogs = [
     excerpt:
       "How modern brands build trust, reach, and conversions through social platforms.",
     image:
-      "https://plus.unsplash.com/premium_photo-1684341008285-3da3c563143e?q=80&w=1032",
+      "https://images.unsplash.com/photo-1557838923-2985c318be48?w=1200&q=80",
     date: "Dec 20, 2025",
     category: "Social Media",
   },
@@ -44,158 +45,194 @@ const blogs = [
     excerpt:
       "Learn how to design email campaigns that drive real engagement and revenue.",
     image:
-      "https://media.istockphoto.com/id/935427102/photo/digital-marketing-word-on-blackboard-with-supportive-icons.jpg",
+      "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=1200&q=80",
     date: "Nov 30, 2025",
     category: "Email Marketing",
   },
+  {
+    id: 5,
+    title: "Brand Positioning in a Crowded Market",
+    excerpt:
+      "How successful brands differentiate themselves and stay memorable.",
+    image:
+      "https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=1200&q=80",
+    date: "Nov 12, 2025",
+    category: "Branding",
+  },
+  {
+    id: 6,
+    title: "UI/UX Principles for High-Converting Websites",
+    excerpt:
+      "Design psychology and layout strategies that directly impact conversions.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    date: "Oct 26, 2025",
+    category: "UX Design",
+  },
+  {
+    id: 7,
+    title: "Website Performance Optimization Guide",
+    excerpt:
+      "Speed, Core Web Vitals, and performance tweaks every site must implement.",
+    image:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80",
+    date: "Oct 10, 2025",
+    category: "Performance",
+  },
+  {
+    id: 8,
+    title: "AI in Digital Marketing: What Actually Works",
+    excerpt:
+      "Cut through the hype and discover practical AI use cases for marketers.",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
+    date: "Sep 28, 2025",
+    category: "AI Marketing",
+  },
+  {
+    id: 9,
+    title: "Conversion Rate Optimization Checklist",
+    excerpt:
+      "Proven CRO tactics to turn more visitors into paying customers.",
+    image:
+      "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1200&q=80",
+    date: "Sep 12, 2025",
+    category: "CRO",
+  },
+  {
+    id: 10,
+    title: "Content Strategy for Long-Term Growth",
+    excerpt:
+      "How to build content engines that compound results over time.",
+    image:
+      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1200&q=80",
+    date: "Aug 30, 2025",
+    category: "Content",
+  },
+  {
+    id: 11,
+    title: "Landing Page Mistakes That Kill Conversions",
+    excerpt:
+      "Common UX and messaging mistakes that silently cost you leads.",
+    image:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80",
+    date: "Aug 14, 2025",
+    category: "UX Design",
+  },
+  {
+    id: 12,
+    title: "The Future of Digital Agencies",
+    excerpt:
+      "How agencies are evolving with automation, AI, and performance models.",
+    image:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80",
+    date: "Jul 30, 2025",
+    category: "Business",
+  },
 ];
 
-/* ================= MOTION PRESETS ================= */
-const fadeSoft = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
-const imageEase = {
-  hidden: { scale: 1.04 },
-  visible: {
-    scale: 1,
-    transition: { duration: 1.1, ease: "easeOut" },
-  },
-};
-
-/* ================= BLOG PAGE ================= */
+/* ================= PAGE ================= */
 const BlogsPage = () => {
   const featured = blogs.find((b) => b.featured);
-  const rest = blogs.filter((b) => !b.featured);
 
   return (
     <>
       <Navbar />
 
       {/* ================= HERO ================= */}
-      <section className="pt-44 pb-32 bg-black text-white relative overflow-hidden">
+      <section className="pt-48 pb-36 bg-black text-white">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <motion.span
-            variants={fadeSoft}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
             className="uppercase tracking-widest text-gray-400 text-sm block"
           >
             Insights & Thinking
           </motion.span>
 
           <motion.h1
-            variants={fadeSoft}
-            initial="hidden"
-            animate="visible"
-            className="mt-6 text-[46px] sm:text-[64px] lg:text-[84px] font-extrabold leading-[1.05] max-w-4xl"
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="mt-6 text-[48px] sm:text-[64px] lg:text-[88px] font-extrabold leading-[1.05] max-w-5xl"
           >
             Ideas, strategies & stories shaping digital growth
           </motion.h1>
         </div>
       </section>
 
-      {/* ================= FEATURED BLOG ================= */}
+      {/* ================= FEATURED ================= */}
       {featured && (
-        <section className="-mt-24 relative z-10">
+        <section className="-mt-28 relative z-10">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
             <motion.div
-              variants={fadeSoft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-120px" }}
-              className="bg-white rounded-[32px] overflow-hidden shadow-[0_60px_180px_rgba(0,0,0,0.2)] grid grid-cols-1 lg:grid-cols-2"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="grid grid-cols-1 lg:grid-cols-2 rounded-[36px] overflow-hidden bg-white shadow-[0_80px_200px_rgba(0,0,0,0.25)]"
             >
-              <motion.div
-                variants={imageEase}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="overflow-hidden"
-              >
-                <img
-                  src={featured.image}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
+              <img
+                src={featured.image}
+                alt={featured.title}
+                className="h-full w-full object-cover"
+              />
 
-              <div className="p-10 lg:p-14 flex flex-col justify-center">
-                <span className="text-xs uppercase tracking-wider text-gray-400">
+              <div className="p-12 lg:p-16 flex flex-col justify-center">
+                <span className="text-xs uppercase tracking-widest text-gray-400">
                   Featured · {featured.category}
                 </span>
 
-                <h2 className="mt-4 text-3xl lg:text-4xl font-bold leading-tight">
+                <h2 className="mt-4 text-4xl lg:text-5xl font-bold">
                   {featured.title}
                 </h2>
 
-                <p className="mt-6 text-gray-600 leading-relaxed">
+                <p className="mt-6 text-gray-600 text-lg">
                   {featured.excerpt}
                 </p>
 
-                <motion.button
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 140 }}
-                  className="mt-8 self-start text-sm font-semibold"
-                >
+                <button className="mt-10 text-sm font-semibold">
                   Read Article →
-                </motion.button>
+                </button>
               </div>
             </motion.div>
           </div>
         </section>
       )}
 
-      {/* ================= BLOG LIST ================= */}
-      <section className="bg-[#f6f6f6] pt-32 pb-28">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          {rest.map((blog, i) => (
+      {/* ================= ALL BLOGS ================= */}
+      <section className="bg-[#f6f6f6] pt-40 pb-32">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
+          {blogs.map((blog, i) => (
             <motion.article
               key={blog.id}
-              variants={fadeSoft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.08 }}
-              className="group bg-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_40px_120px_rgba(0,0,0,0.15)] transition-shadow duration-500"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.06 }}
+              className="relative rounded-[32px] overflow-hidden bg-black group"
             >
-              <motion.div
-                variants={imageEase}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="overflow-hidden"
-              >
-                <img
-                  src={blog.image}
-                  className="w-full h-[220px] object-cover"
-                />
-              </motion.div>
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="h-[360px] w-full object-cover group-hover:scale-105 transition duration-700"
+              />
 
-              <div className="p-8">
-                <span className="text-xs uppercase tracking-wider text-gray-400">
-                  {blog.category} · {blog.date}
-                </span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-8 text-white">
+                <p className="text-xs text-white/70">{blog.date}</p>
 
                 <h3 className="mt-3 text-xl font-bold leading-snug">
                   {blog.title}
                 </h3>
 
-                <p className="mt-4 text-gray-600 text-sm leading-relaxed">
+                <p className="mt-4 text-sm text-white/80 line-clamp-3">
                   {blog.excerpt}
                 </p>
 
-                <motion.button
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 140 }}
-                  className="mt-6 text-sm font-semibold"
-                >
-                  Read More →
-                </motion.button>
+                <div className="mt-6 text-sm font-semibold">
+                  Read Article →
+                </div>
               </div>
             </motion.article>
           ))}

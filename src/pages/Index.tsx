@@ -4,7 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import MarqueeImages from "@/components/MarqueeImages";
 // import FeaturedWorks from "@/components/FeaturedWorks";
 import WhyChooseUs from "@/components/WhyChooseUs";
-
+import WhatYouGain from "@/components/WhatYouGain";
 import Services from "@/components/Services";
 
 
@@ -21,8 +21,10 @@ const Index = () => {
       {/* <FeaturedWorks /> */}
   
     <WhyChooseUs />
-      <Services />
     
+    {/* <whymidis /> */}
+      <Services />
+      <WhatYouGain />
       <CTA />
       <Footer />
     </div>

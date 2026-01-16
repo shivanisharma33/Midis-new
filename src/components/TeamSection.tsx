@@ -5,97 +5,126 @@ import sagar from "../assets/Sagar bakshi.jpg";
 
 const team = [
   {
-    name: "Gaurav Sharma",
-    role: "CEO & Director",
-    image: gaurav,
-    description:
-      "Visionary leader driving strategic innovation, scalable growth solutions, and high-impact brand execution across digital ecosystems.",
-  },
-  {
     name: "Sagar Bakshi",
     role: "Managing Director",
     image: sagar,
     description:
       "Operational leader with deep expertise in AI-driven growth strategies, intelligent automation, and building systems that help brands scale faster and smarter.",
   },
+  {
+    name: "Gaurav Sharma",
+    role: "CEO & Director",
+    image: gaurav,
+    description:
+      "Visionary leader driving strategic innovation, scalable growth solutions, and high-impact brand execution across digital ecosystems.",
+  },
 ];
 
 const TeamSection: React.FC = () => {
   return (
-    <section className="relative w-full bg-white px-8 lg:px-20 py-44 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full bg-white px-10 lg:px-28 xl:px-36 py-56 overflow-hidden">
+      <div className="max-w-[1550px] mx-auto relative">
 
-        {/* Heading */}
-    {/* Heading */}
-<motion.div
-  initial={{ opacity: 0, x: -80 }}   // 👈 start from left
-  whileInView={{ opacity: 1, x: 0 }} // 👉 move to normal position
-  transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-  viewport={{ once: true }}
-  className="max-w-3xl mb-40"
->
-  <span className="block text-xs uppercase tracking-[0.5em] text-gray-400 mb-10">
-    Our Team
-  </span>
+        {/* ================= HEADING ================= */}
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="max-w-4xl mb-56"
+        >
+          <span className="block text-xs uppercase tracking-[0.55em] text-gray-400 mb-14">
+            Leadership
+          </span>
 
-  <h2 className="text-[46px] md:text-[66px] lg:text-[88px] font-semibold leading-[1.02] tracking-tight text-black">
-    The people behind <br />
-    <span className="text-black/30">Midis</span>
-  </h2>
-</motion.div>
+          <h2 className="text-[64px] md:text-[82px] xl:text-[102px] font-semibold leading-[1.02] tracking-tight text-black">
+            The minds shaping <br />
+            <span className="text-black/20">Midis</span>
+          </h2>
+        </motion.div>
 
-
-        {/* Team Members */}
-        <div className="space-y-44">
+        {/* ================= TEAM MEMBERS ================= */}
+        <div className="space-y-64">
 
           {team.map((member, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-24 items-center ${
+              className={`relative grid grid-cols-1 lg:grid-cols-2 gap-36 items-center ${
                 index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
               }`}
             >
-              {/* Image */}
-              <div
-                className={`relative overflow-hidden rounded-[32px] ${
+              {/* ================= IMAGE WRAPPER ================= */}
+              <motion.div
+                whileHover={{ y: -12 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className={`relative rounded-[42px] overflow-hidden ${
                   index % 2 === 1 ? "lg:col-start-2" : ""
                 }`}
               >
-                <img
+                {/* Glow */}
+                <div className="absolute -inset-6 bg-gradient-to-br from-black/10 via-transparent to-transparent blur-2xl opacity-60" />
+
+                <motion.img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-[540px] object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.04]"
+                  className="relative z-10 w-full h-[640px] xl:h-[720px] object-cover rounded-[42px]"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
                 />
 
-                {/* Soft overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-              </div>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent z-20" />
+              </motion.div>
 
-              {/* Content */}
-              <div className="max-w-xl">
-                <h3 className="text-[38px] md:text-[46px] font-medium text-black mb-6">
+              {/* ================= CONTENT ================= */}
+              <div className="max-w-[580px] relative z-10">
+                <motion.h3
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, duration: 0.9 }}
+                  viewport={{ once: true }}
+                  className="text-[44px] xl:text-[52px] font-medium text-black mb-6"
+                >
                   {member.name}
-                </h3>
+                </motion.h3>
 
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-500 mb-12">
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="text-xs uppercase tracking-[0.45em] text-gray-500 mb-16"
+                >
                   {member.role}
-                </p>
+                </motion.p>
 
-                <p className="text-lg leading-[1.85] text-gray-700">
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35, duration: 0.9 }}
+                  viewport={{ once: true }}
+                  className="text-[18.5px] xl:text-[19.5px] leading-[1.95] text-gray-700"
+                >
                   {member.description}
-                </p>
+                </motion.p>
 
                 {/* Signature */}
-                <div className="flex items-center gap-5 mt-14">
-                  <span className="h-px w-16 bg-black" />
+                <motion.div
+                  initial={{ opacity: 0, width: 0 }}
+                  whileInView={{ opacity: 1, width: "auto" }}
+                  transition={{ delay: 0.5, duration: 1 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-6 mt-20"
+                >
+                  <span className="h-px w-24 bg-black" />
                   <span className="text-sm tracking-wide text-gray-500">
-                    Leadership • Vision • Execution
+                    Strategy • Leadership • Impact
                   </span>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}

@@ -1,4 +1,5 @@
 import React from "react";
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
@@ -23,11 +24,48 @@ const Footer: React.FC = () => {
               </p>
 
               {/* SOCIAL ICONS */}
-              <div className="flex items-center gap-5 sm:gap-6 text-white/80">
-                <span className="cursor-pointer hover:text-white transition">X</span>
-                <span className="cursor-pointer hover:text-white transition">◎</span>
-                <span className="cursor-pointer hover:text-white transition">f</span>
-              </div>
+           
+<div className="flex items-center gap-5 sm:gap-6 text-white/80">
+  <a
+    href="https://www.instagram.com/officialmidis/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+    className="hover:text-white transition"
+  >
+    <FaInstagram size={18} />
+  </a>
+
+  <a
+    href="https://www.facebook.com/profile.php?id=61577942184075"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+    className="hover:text-white transition"
+  >
+    <FaFacebookF size={18} />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/company/midisresources/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+    className="hover:text-white transition"
+  >
+    <FaLinkedinIn size={18} />
+  </a>
+
+  <a
+    href="https://www.youtube.com/@MidisOfficial"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="YouTube"
+    className="hover:text-white transition"
+  >
+    <FaYoutube size={18} />
+  </a>
+</div>
             </div>
 
             {/* EXPLORE */}
@@ -47,14 +85,14 @@ const Footer: React.FC = () => {
             {/* MORE */}
             <div>
               <p className="text-xs tracking-widest text-white/40 mb-4 sm:mb-6 uppercase">
-                More
+                Our Services
               </p>
               <ul className="space-y-3 sm:space-y-4 text-sm">
-                <li>Contact</li>
-                <li>Style Guide</li>
-                <li>Changelog</li>
-                <li>Licenses</li>
-                <li>Instructions</li>
+                <li>Web Development</li>
+                <li>Web Designing</li>
+                <li>Graphic Design</li>
+                <li>Content Writing</li>
+                <li>Video Editing</li>
               </ul>
             </div>
 
@@ -65,12 +103,15 @@ const Footer: React.FC = () => {
               </p>
               <div className="text-sm space-y-3 sm:space-y-4 text-white/80">
                 <p>
-                  XYZ Times Sq, New York,
+              1st Floor, E 279, Industrial Area,
+
                   <br />
-                  United States
+                 Sector 75, S.A.S Nagar, Punjab
+160055
                 </p>
-                <p>hello@midis.com</p>
-                <p>+1 023-456-789</p>
+                <p>hello@midis.in</p>
+                <p>🇮🇳 +91 97793 20626</p>
+                 <p>🇺🇸 +1 (862) 295-0117</p>
               </div>
             </div>
           </div>

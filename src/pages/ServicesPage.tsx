@@ -148,21 +148,13 @@ const fadeUp = {
 };
 
 const slideLeft = {
-  hidden: { opacity: 0, x: -120 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 1 },
-  },
+  hidden: { opacity: 0, x: -80 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.9 } },
 };
 
 const slideRight = {
-  hidden: { opacity: 0, x: 120 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 1 },
-  },
+  hidden: { opacity: 0, x: 80 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.9 } },
 };
 
 /* ================= PAGE ================= */
@@ -174,77 +166,67 @@ const ServicesPage: React.FC = () => {
     <>
       <Navbar />
 
-      {/* ================= HERO SECTION ================= */}
-    <section className="relative px-6 lg:px-20 pt-32 pb-24 overflow-hidden">
-  {/* Background Image */}
-  {/* <div
-    className="absolute inset-0 bg-cover bg-center scale-110"
-    style={{
-      backgroundImage:
-        "url('./src/assets/Vibrant Digital Artists Studio.png')",
-    }}
-  /> */}
+      {/* ================= HERO ================= */}
+      <section className="relative px-4 sm:px-6 lg:px-20 pt-28 sm:pt-32 pb-20 sm:pb-24 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-110"
+          style={{
+            backgroundImage:
+              "url('./src/assets/Vibrant Digital Artists Studio.png')",
+          }}
+        />
+        <div className="absolute inset-0 backdrop-blur-md bg-white/30" />
 
-  {/* Blur + Overlay Layer */}
-  <div className="absolute inset-0 backdrop-blur-md bg-white/2" />
+        <div className="relative max-w-7xl mx-auto text-center lg:text-left">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
+            <div className="flex justify-center lg:justify-start items-center gap-5 mb-6">
+              <span className="h-[1px] w-10 sm:w-14 bg-gradient-to-r from-orange-600 to-orange-300" />
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-orange-500">
+                Our Services
+              </span>
+            </div>
 
-  {/* Content */}
-  <div className="relative max-w-7xl mx-auto">
-    <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
-      {/* Eyebrow */}
-      <div className="flex items-center gap-5 mb-8">
-        <span className="h-[1px] w-14 bg-gradient-to-r from-orange-600 to-orange-300" />
-        <span className="text-[11px] uppercase tracking-[0.4em] text-orange-500">
-          Our Services
-        </span>
-      </div>
+            <h1 className="text-[34px] sm:text-[46px] md:text-[64px] lg:text-[88px] font-semibold leading-[1.05] text-gray-900">
+              We craft digital <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-300">
+                experiences that grow brands
+              </span>
+            </h1>
 
-      {/* Heading */}
-      <h1 className="text-[46px] md:text-[64px] lg:text-[88px] font-semibold leading-[1.02] text-gray-900">
-        We craft digital <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-300">
-          experiences that grow brands
-        </span>
-      </h1>
-
-    
-
-      {/* Accent Line */}
-      <div className="mt-12 h-[3px] w-40 rounded-full bg-gradient-to-r from-orange-600 to-orange-300" />
-    </motion.div>
-  </div>
-</section>
-
-
+            <div className="mx-auto lg:mx-0 mt-10 h-[3px] w-28 sm:w-40 rounded-full bg-gradient-to-r from-orange-600 to-orange-300" />
+          </motion.div>
+        </div>
+      </section>
 
       {/* ================= SERVICES CARDS ================= */}
-      <section className="bg-white px-6 lg:px-20 pb-32">
-        <div className="max-w-7xl mx-auto space-y-24">
+      <section className="bg-white px-4 sm:px-6 lg:px-20 pb-24 sm:pb-32">
+        <div className="max-w-7xl mx-auto space-y-16 sm:space-y-24">
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={index % 2 === 0 ? slideLeft : slideRight}
               initial="hidden"
               whileInView="visible"
-              className="rounded-[28px] bg-black/5 border border-black/10 shadow-xl overflow-hidden"
+              viewport={{ once: false, amount: 0.3 }}
+              className="rounded-2xl sm:rounded-[28px] bg-black/5 border border-black/10 shadow-xl overflow-hidden"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 p-8 lg:p-16 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 p-6 sm:p-8 lg:p-16 items-center">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="rounded-2xl h-[260px] lg:h-[360px] w-full object-cover"
+                  className="rounded-xl sm:rounded-2xl w-full h-[220px] sm:h-[260px] lg:h-[360px] object-cover"
                 />
 
-                <div>
+                <div className="text-center lg:text-left">
                   <span className="text-xs uppercase tracking-[0.3em] text-gray-600">
                     {service.tag}
                   </span>
 
-                  <h2 className="mt-4 text-[30px] lg:text-[44px] font-semibold text-gray-900">
+                  <h2 className="mt-3 sm:mt-4 text-[24px] sm:text-[30px] lg:text-[44px] font-semibold text-gray-900">
                     {service.title}
                   </h2>
 
-                  <p className="mt-4 text-gray-700 text-lg">
+                  <p className="mt-4 text-gray-700 text-sm sm:text-base lg:text-lg">
                     {service.description}
                   </p>
 
@@ -255,7 +237,7 @@ const ServicesPage: React.FC = () => {
                     }}
                     className="overflow-hidden mt-6"
                   >
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 text-sm sm:text-base">
                       {service.more.map((item, i) => (
                         <li key={i} className="flex gap-3">
                           <span className="w-2 h-2 bg-gray-900 rounded-full mt-2" />
@@ -269,12 +251,14 @@ const ServicesPage: React.FC = () => {
                     onClick={() =>
                       setActiveIndex(activeIndex === index ? null : index)
                     }
-                    className="mt-10 flex items-center gap-4"
+                    className="mx-auto lg:mx-0 mt-8 sm:mt-10 flex items-center gap-4"
                   >
-                    <span className="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center text-lg">
+                    <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-900 text-white flex items-center justify-center text-lg">
                       →
                     </span>
-                    <span className="text-sm tracking-wide">Learn More</span>
+                    <span className="text-xs sm:text-sm tracking-wide">
+                      Learn More
+                    </span>
                   </button>
                 </div>
               </div>

@@ -1,20 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
-import gaurav from "../assets/Gaurav zSharma.png";
-import sagar from "../assets/Sagar bakshi.jpg";
+// import gaurav from "../assets/Gaurav zSharma.png";
+// import sagar from "../assets/Sagar bakshi.jpg";
 
 const team = [
   {
     name: "Sagar Bakshi",
     role: "Managing Director",
-    image: sagar,
+    image: "/Sagar bakshi.jpg",
     description:
       "Operational leader with deep expertise in AI-driven growth strategies, intelligent automation, and building systems that help brands scale faster and smarter.",
   },
   {
     name: "Gaurav Sharma",
     role: "CEO & Director",
-    image: gaurav,
+    image: "/Gaurav zSharma.png",
     description:
       "Visionary leader driving strategic innovation, scalable growth solutions, and high-impact brand execution across digital ecosystems.",
   },

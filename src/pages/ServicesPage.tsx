@@ -177,13 +177,13 @@ const ServicesPage: React.FC = () => {
       {/* ================= HERO SECTION ================= */}
     <section className="relative px-6 lg:px-20 pt-32 pb-24 overflow-hidden">
   {/* Background Image */}
-  <div
+  {/* <div
     className="absolute inset-0 bg-cover bg-center scale-110"
     style={{
       backgroundImage:
         "url('./src/assets/Vibrant Digital Artists Studio.png')",
     }}
-  />
+  /> */}
 
   {/* Blur + Overlay Layer */}
   <div className="absolute inset-0 backdrop-blur-md bg-white/2" />

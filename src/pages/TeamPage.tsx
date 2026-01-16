@@ -12,13 +12,13 @@ const directors = [
     name: "Sagar Bakshi",
     role: "Managing Director",
     image:
-      "src/assets/Sagar bakshi.jpg",
+      "/Sagar bakshi.jpg",
   },
   {
     name: "Gourav Sharma",
     role: "CEO & Director",
     image:
-      "src/assets/Gaurav zSharma.png",
+      "/Gaurav zSharma.png",
   },
 ];
 

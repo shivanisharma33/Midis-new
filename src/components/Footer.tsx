@@ -74,11 +74,11 @@ const Footer: React.FC = () => {
                 Explore
               </p>
               <ul className="space-y-3 sm:space-y-4 text-sm">
-                <li>Home</li>
-                <li>About</li>
-                <li>Works</li>
-                <li>Services</li>
-                <li>Blog</li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/works">Works</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/blog">Blog</a></li>
               </ul>
             </div>
 
@@ -88,11 +88,11 @@ const Footer: React.FC = () => {
                 Our Services
               </p>
               <ul className="space-y-3 sm:space-y-4 text-sm">
-                <li>Web Development</li>
-                <li>Web Designing</li>
-                <li>Graphic Design</li>
-                <li>Content Writing</li>
-                <li>Video Editing</li>
+                <li><a href="/services">Web Development</a></li>
+                <li><a href="/services">Web Designing</a></li>
+                <li><a href="/services">Graphic Design</a></li>
+                <li><a href="/services">Content Writing</a></li>
+                <li><a href="/services">Video Editing</a></li>
               </ul>
             </div>
 
@@ -117,13 +117,16 @@ const Footer: React.FC = () => {
           </div>
 
           {/* BIG TYPOGRAPHY */}
-          <div className="pt-12 sm:pt-16 lg:pt-24">
-            <h1 className="text-[44px] sm:text-[72px] md:text-[100px] lg:text-[140px] xl:text-[160px] leading-[0.95] font-bold tracking-tight">
-              Design is Our
-              <br />
-              Passion.
-            </h1>
-          </div>
+        <div className="pt-12 sm:pt-16 lg:pt-24">
+  <h1 className="text-[44px] sm:text-[72px] md:text-[100px] lg:text-[140px] xl:text-[160px] leading-[0.95] font-bold tracking-tight">
+    Design is Our
+    <br />
+    <span className="inline-block mt-6 sm:mt-8 lg:mt-10">
+      Passion.
+    </span>
+  </h1>
+</div>
+
         </div>
       </div>
     </footer>

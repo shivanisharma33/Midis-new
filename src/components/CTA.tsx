@@ -1,95 +1,82 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-const ctaImages = [
-  "https://cdn.prod.website-files.com/689989c2270f878736e77521/6899f66baf162b757a39b091_Tennis%20Net%20Close-Up.webp",
-  "https://cdn.prod.website-files.com/689989c2270f878736e77521/6899f66bbac017f6a400b614_Stylized%20Graffiti-Inspired%20Robot.webp",
-  "https://cdn.prod.website-files.com/689989c2270f878736e77521/6899f66bdd829a2fb5a6dc35_Fashion%20Portrait%20with%20Vibrant%20Hat.webp",
-  "https://cdn.prod.website-files.com/689989c2270f878736e77521/68a061f4c6476b52f101c546_Tennis%20Court%20Smiley.webp",
-  "https://cdn.prod.website-files.com/689989c2270f878736e77521/68a06273d7ac585cdfd38aff_Striking%20Fashion%20Portrait.webp",
-  "https://cdn.prod.website-files.com/689989c2270f878736e77521/6899f66c64dc19cb7248b949_Color%20Block%20Tote%20Bag.webp",
-];
-
 const CTA = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={containerRef} className="py-24 lg:py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="relative flex flex-col items-center">
-          {/* Floating Images - Left Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="absolute left-0 top-0 hidden lg:flex flex-col gap-4"
+    <section
+      ref={ref}
+      className="relative bg-neutral-950 py-28 lg:py-36"
+    >
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="
+            relative
+            rounded-3xl
+            border
+            border-white/10
+            bg-gradient-to-b
+            from-white/[0.04]
+            to-white/[0.01]
+            px-10
+            sm:px-16
+            py-20
+            text-center
+            backdrop-blur
+          "
+        >
+          {/* Eyebrow */}
+          <span className="block text-xs uppercase tracking-[0.35em] text-white/50">
+            Let’s work together
+          </span>
+
+          {/* Heading */}
+          <h2 className="mt-6 text-[40px] sm:text-[52px] lg:text-[64px] font-semibold leading-[1.05] text-white">
+            Ready to elevate your
+            <br />
+            digital presence?
+          </h2>
+
+          {/* Description */}
+          <p className="mt-6 max-w-xl mx-auto text-lg text-white/65">
+            We partner with forward-thinking brands to design and build digital
+            experiences that are refined, effective, and scalable.
+          </p>
+
+          {/* CTA Button */}
+          <motion.a
+            href="/contact"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="
+              inline-flex
+              items-center
+              gap-3
+              mt-12
+              px-10
+              py-4
+              rounded-full
+              bg-white
+              text-black
+              text-lg
+              font-medium
+              hover:bg-orange-500
+              hover:text-black
+              transition-colors
+            "
           >
-            <img 
-              src={ctaImages[0]}
-              alt=""
-              className="w-32 h-40 object-cover rounded-2xl"
-            />
-            <img 
-              src={ctaImages[1]}
-              alt=""
-              className="w-32 h-40 object-cover rounded-2xl"
-            />
-            <img 
-              src={ctaImages[2]}
-              alt=""
-              className="w-32 h-40 object-cover rounded-2xl"
-            />
-          </motion.div>
-
-          {/* Center Content */}
-         <motion.div
-  initial={{ opacity: 0, y: 30 }}
-  animate={isInView ? { opacity: 1, y: 0 } : {}}
-  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-  className="text-center max-w-2xl"
->
-  <h3 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-8">
-    Let's Work Together!
-  </h3>
-
-  <motion.a
-    href="/contact"
-    className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-lg font-medium hover:opacity-90 transition-opacity"
-    whileHover={{ scale: 1.02 }}
-    whileTap={{ scale: 0.98 }}
-  >
-    <ArrowUpRight className="w-5 h-5" />
-    Contact Us
-  </motion.a>
-</motion.div>
-
-
-          {/* Floating Images - Right Side */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="absolute right-0 top-0 hidden lg:flex flex-col gap-4"
-          >
-            <img 
-              src={ctaImages[3]}
-              alt=""
-              className="w-32 h-40 object-cover rounded-2xl"
-            />
-            <img 
-              src={ctaImages[4]}
-              alt=""
-              className="w-32 h-40 object-cover rounded-2xl"
-            />
-            <img 
-              src={ctaImages[5]}
-              alt=""
-              className="w-32 h-40 object-cover rounded-2xl"
-            />
-          </motion.div>
-        </div>
+            Get in Touch
+            <ArrowUpRight className="w-5 h-5" />
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

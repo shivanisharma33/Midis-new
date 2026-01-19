@@ -1,7 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-// import gaurav from "../assets/Gaurav zSharma.png";
-// import sagar from "../assets/Sagar bakshi.jpg";
 
 const team = [
   {
@@ -9,127 +7,114 @@ const team = [
     role: "Managing Director",
     image: "/Sagar bakshi.jpg",
     description:
-      "Operational leader with deep expertise in AI-driven growth strategies, intelligent automation, and building systems that help brands scale faster and smarter.",
+      "Sagar Bakshi leads Midis as Managing Director, overseeing strategy, operations, and digital growth initiatives. With a strong focus on AI-driven systems, automation, and scalable brand building, he helps businesses transform complexity into clarity. His experience spans multiple e-commerce ventures and Mining Discovery, where he contributes to global industry insights and long-term growth strategies.",
   },
   {
     name: "Gaurav Sharma",
     role: "CEO & Director",
     image: "/Gaurav zSharma.png",
     description:
-      "Visionary leader driving strategic innovation, scalable growth solutions, and high-impact brand execution across digital ecosystems.",
+      "Gaurav Sharma serves as CEO & Director at Midis, guiding vision, innovation, and execution across digital platforms. With deep expertise in branding, web development, and performance-led solutions, he ensures every initiative delivers meaningful and measurable impact. He also leads strategic growth at Mining Discovery, bridging technology with industry-focused intelligence.",
   },
 ];
 
-const TeamSection: React.FC = () => {
+const TeamSection = () => {
   return (
-    <section className="relative w-full bg-white px-10 lg:px-28 xl:px-36 py-56 overflow-hidden">
-      <div className="max-w-[1550px] mx-auto relative">
+    <section className="bg-neutral-50 py-28 sm:py-36">
+      <div className="max-w-7xl mx-auto px-6">
 
-        {/* ================= HEADING ================= */}
-        <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-          className="max-w-4xl mb-56"
-        >
-          <span className="block text-xs uppercase tracking-[0.55em] text-gray-400 mb-14">
-            Leadership
-          </span>
+        {/* ================= HEADER ================= */}
+     <motion.div
+  initial={{ opacity: 0, y: 32 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+  viewport={{ once: true }}
+  className="max-w-3xl mb-24"
+>
+  {/* Eyebrow */}
+  <span className="block text-xs uppercase tracking-[0.45em] text-orange-500 mb-5">
+    Leadership
+  </span>
 
-          <h2 className="text-[64px] md:text-[82px] xl:text-[102px] font-semibold leading-[1.02] tracking-tight text-black">
-            The minds shaping <br />
-            <span className="text-black/20">Midis</span>
-          </h2>
-        </motion.div>
+  {/* Heading */}
+  <h2 className="text-[38px] sm:text-[48px] lg:text-[60px] font-semibold leading-tight text-black">
+    The people guiding
+    <br />
+    <span className="text-orange-500">Midis forward</span>
+  </h2>
+</motion.div>
 
-        {/* ================= TEAM MEMBERS ================= */}
-        <div className="space-y-64">
 
+        {/* ================= PROFILES ================= */}
+        <div className="space-y-24 sm:space-y-32">
           {team.map((member, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 100 }}
+              initial={{ opacity: 0, y: 48 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
-              className={`relative grid grid-cols-1 lg:grid-cols-2 gap-36 items-center ${
-                index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-              }`}
+              className="
+                bg-white
+                rounded-3xl
+                p-6
+                sm:p-10
+                lg:p-14
+                grid
+                grid-cols-1
+                lg:grid-cols-2
+                gap-12
+                lg:gap-20
+                items-center
+                shadow-[0_40px_120px_rgba(0,0,0,0.06)]
+              "
             >
-              {/* ================= IMAGE WRAPPER ================= */}
-              <motion.div
-                whileHover={{ y: -12 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className={`relative rounded-[42px] overflow-hidden ${
-                  index % 2 === 1 ? "lg:col-start-2" : ""
+              {/* IMAGE */}
+              <div
+                className={`relative ${
+                  index % 2 === 1 ? "lg:order-2" : ""
                 }`}
               >
-                {/* Glow */}
-                <div className="absolute -inset-6 bg-gradient-to-br from-black/10 via-transparent to-transparent blur-2xl opacity-60" />
-
-                <motion.img
+                <img
                   src={member.image}
                   alt={member.name}
-                  className="relative z-10 w-full h-[640px] xl:h-[720px] object-cover rounded-[42px]"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 1.2, ease: "easeOut" }}
+                  className="
+                    w-full
+                    h-[360px]
+                    sm:h-[420px]
+                    lg:h-[480px]
+                    object-cover
+                    rounded-2xl
+                  "
                 />
+              </div>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent z-20" />
-              </motion.div>
-
-              {/* ================= CONTENT ================= */}
-              <div className="max-w-[580px] relative z-10">
-                <motion.h3
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.9 }}
-                  viewport={{ once: true }}
-                  className="text-[44px] xl:text-[52px] font-medium text-black mb-6"
-                >
+              {/* CONTENT */}
+              <div className="max-w-xl">
+                <h3 className="text-[28px] sm:text-[34px] font-medium text-black">
                   {member.name}
-                </motion.h3>
+                </h3>
 
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.25, duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="text-xs uppercase tracking-[0.45em] text-gray-500 mb-16"
-                >
+                <p className="mt-2 text-xs uppercase tracking-[0.4em] text-gray-500">
                   {member.role}
-                </motion.p>
+                </p>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.35, duration: 0.9 }}
-                  viewport={{ once: true }}
-                  className="text-[18.5px] xl:text-[19.5px] leading-[1.95] text-gray-700"
-                >
+                <p className="mt-6 sm:mt-8 text-[16px] sm:text-[17px] leading-[1.85] text-gray-700">
                   {member.description}
-                </motion.p>
+                </p>
 
-                {/* Signature */}
-                <motion.div
-                  initial={{ opacity: 0, width: 0 }}
-                  whileInView={{ opacity: 1, width: "auto" }}
-                  transition={{ delay: 0.5, duration: 1 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-6 mt-20"
-                >
-                  <span className="h-px w-24 bg-black" />
-                  <span className="text-sm tracking-wide text-gray-500">
-                    Strategy • Leadership • Impact
+                {/* Divider */}
+                <div className="mt-10 flex items-center gap-4">
+                  <span className="h-px w-16 bg-black" />
+                  <span className="text-sm text-gray-500">
+                    Leadership • Strategy • Growth
                   </span>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           ))}
-
         </div>
+
       </div>
     </section>
   );

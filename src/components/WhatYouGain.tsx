@@ -9,28 +9,26 @@ import { Check, X, User, Tag } from "lucide-react";
 const steps = [
   {
     number: "01",
-    title: " Experience across borders",
-    description: "we know what works globally.",
+    title: "Experience across borders",
+    description: "We know what works globally.",
     icon: Check,
   },
   {
     number: "02",
     title: "All-in-one solutions",
-    description:
-      " no need to hire five different agencies.",
+    description: "No need to hire five different agencies.",
     icon: X,
   },
   {
     number: "03",
     title: "Clear communication",
-    description:
-      "no jargon, just results explained simply.",
+    description: "No jargon, just results explained simply.",
     icon: User,
   },
   {
     number: "04",
-    title: "Growth strategies ",
-    description: "designed to scale with your business.",
+    title: "Growth strategies",
+    description: "Designed to scale with your business.",
     icon: Tag,
   },
 ];
@@ -55,44 +53,70 @@ const WhatYouGain = () => {
         <div className="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
           
           {/* ================= LEFT SIDE ================= */}
-        <div className="flex items-center">
-  <div className="overflow-hidden">
-    <motion.h2
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: 0.08,
-          },
-        },
-      }}
-      className="text-[42px] sm:text-[54px] lg:text-[64px] font-semibold leading-[1.05]"
-    >
-      {["What You’ll Gain", "With Midis"].map((line, i) => (
-        <div key={i} className="overflow-hidden">
-          <motion.span
-            variants={{
-              hidden: { y: "100%" },
-              visible: {
-                y: "0%",
-                transition: {
-                  duration: 0.9,
-                  ease: [0.16, 1, 0.3, 1],
-                },
-              },
-            }}
-            className="block"
-          >
-            {line}
-          </motion.span>
-        </div>
-      ))}
-    </motion.h2>
-  </div>
-</div>
+          <div className="flex items-center">
+            <div className="overflow-hidden">
+              <motion.h2
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={{
+                  hidden: {},
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.08,
+                    },
+                  },
+                }}
+                className="text-[42px] sm:text-[54px] lg:text-[64px] font-semibold leading-[1.05]"
+              >
+                {/* Line 1 */}
+                <div className="overflow-hidden">
+                  <motion.span
+                    variants={{
+                      hidden: { y: "100%" },
+                      visible: {
+                        y: "0%",
+                        transition: {
+                          duration: 0.9,
+                          ease: [0.16, 1, 0.3, 1],
+                        },
+                      },
+                    }}
+                    className="block text-white"
+                  >
+                    What You’ll Gain
+                  </motion.span>
+                </div>
+
+                {/* Line 2 – ORANGE */}
+                <div className="overflow-hidden">
+                  <motion.span
+                    variants={{
+                      hidden: { y: "100%" },
+                      visible: {
+                        y: "0%",
+                        transition: {
+                          duration: 0.9,
+                          ease: [0.16, 1, 0.3, 1],
+                        },
+                      },
+                    }}
+                    className="
+                      block
+                      bg-gradient-to-r
+                      from-orange-400
+                      via-orange-500
+                      to-orange-600
+                      bg-clip-text
+                      text-transparent
+                    "
+                  >
+                    With Midis
+                  </motion.span>
+                </div>
+              </motion.h2>
+            </div>
+          </div>
 
           {/* ================= RIGHT SIDE ================= */}
           <div className="space-y-6">
@@ -130,12 +154,10 @@ const WhatYouGain = () => {
                     backdrop-blur
                   "
                 >
-                  {/* Number */}
                   <span className="text-white/40 text-sm font-medium">
                     {step.number}
                   </span>
 
-                  {/* Content */}
                   <div className="flex-1">
                     <h4 className="text-lg font-medium">
                       {step.title}
@@ -145,7 +167,6 @@ const WhatYouGain = () => {
                     </p>
                   </div>
 
-                  {/* Icon */}
                   <div className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center">
                     <Icon className="w-4 h-4 text-white/70" />
                   </div>
@@ -153,6 +174,7 @@ const WhatYouGain = () => {
               );
             })}
           </div>
+
         </div>
       </div>
     </section>

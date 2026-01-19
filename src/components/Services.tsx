@@ -38,6 +38,13 @@ const services = [
     description: "People check their inbox every day. That’s why email marketing is still one of the most powerful tools in digital. We create campaigns that feel personal and relevant—more like a conversation than a sales pitch.",
     bgColor: "bg-[#f5f0ff]",
   },
+  {
+    image: "https://cdn.prod.website-files.com/689989c2270f878736e77534/68a2d19782c018e44a110307_Modern%20Elegance_%20Tech%20%26%20Texture.webp",
+    tag: "Business",
+    title: "YouTube Management",
+    description: "Grow your channel with expert strategies, optimized uploads, and professional branding support.",
+    bgColor: "bg-[#f5f0ff]",
+  },
 ];
 
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {

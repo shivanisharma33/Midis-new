@@ -18,22 +18,22 @@ type ReasonItem = {
 const items: ReasonItem[] = [
   {
     number: "01.",
-    title: "EXPERTISE &\nSPECIALIZATION",
+    title: "Global Reach",
     image: serviceBranding,
   },
   {
     number: "02.",
-    title: "24/7 CUSTOMER\nSUPPORT",
+    title: "Experienced Team",
     image: workspaceImg,
   },
   {
     number: "03.",
-    title: "COST-EFFECTIVE\nSOLUTIONS",
+    title: "Transparent Reporting",
     image: testimonialBg,
   },
   {
     number: "04.",
-    title: "EXPERTISE &\nSPECIALIZATION",
+    title: "Customized Funnels",
     image: futuristicVR,
   },
 ];

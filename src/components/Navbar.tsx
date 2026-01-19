@@ -71,21 +71,13 @@ export default function Navbar() {
       <div className="hidden md:flex items-center justify-between gap-10 bg-white/70 backdrop-blur-2xl rounded-full px-10 py-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] border border-black/10">
         {/* LEFT */}
         <div className="flex items-center gap-2">
-          <a
-            href="/team"
-            className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors"
-          >
-            Team
-          </a>
-
-          <a
+           <a
             href="/about"
             className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors"
           >
             About
           </a>
-
-          {/* SERVICES */}
+             {/* SERVICES */}
           <div
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
@@ -138,6 +130,16 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
+          <a
+            href="/team"
+            className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors"
+          >
+            Team
+          </a>
+
+         
+
+       
         </div>
 
         {/* LOGO */}
@@ -199,14 +201,14 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
-
+ <a href="/blogs" className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors">
+            Blogs
+          </a>
           <a href="/contact" className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors">
             Contact
           </a>
 
-          <a href="/blogs" className="px-4 py-2 text-sm font-medium hover:text-coral transition-colors">
-            Blogs
-          </a>
+         
         </div>
       </div>
 

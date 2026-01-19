@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 /* ================= DATA ================= */
 
@@ -43,114 +43,156 @@ const reasons = [
 /* ================= COMPONENT ================= */
 
 const WhyChooseUs = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 768px)");
-    setIsMobile(media.matches);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
 
-    const listener = () => setIsMobile(media.matches);
-    media.addEventListener("change", listener);
-
-    return () => media.removeEventListener("change", listener);
-  }, []);
+  /**
+   * 🎯 DELAYED START
+   * - First 20% scroll → NO horizontal movement
+   * - After that → horizontal animation begins
+   */
+  const x = useTransform(
+    scrollYProgress,
+    [0.2, 1],
+    ["0%", `-${(reasons.length - 1) * 25}%`]
+  );
 
   return (
-    <section className="relative py-28 sm:py-32 lg:py-40 bg-white overflow-hidden">
-      {/* Soft background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-neutral-50 to-white" />
+    <section
+      ref={sectionRef}
+      className="relative bg-white"
+      style={{ height: `${reasons.length * 120}vh` }}
+    >
+      {/* ================= HEADER ================= */}
+ <div className="max-w-7xl mx-auto px-6 sm:px-10 pt-28 pb-10">
+  {/* Eyebrow */}
+  <motion.span
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    className="block mb-4 text-xs uppercase tracking-[0.4em] text-black/60"
+  >
+    Why Choose Midis
+  </motion.span>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10">
-        {/* ================= HEADER ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mb-24"
+  {/* Heading */}
+  <motion.h2
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-100px" }}
+    variants={{
+      hidden: {},
+      visible: {
+        transition: {
+          staggerChildren: 0.08,
+        },
+      },
+    }}
+    className="text-[40px] sm:text-[52px] lg:text-[64px] font-semibold tracking-tight leading-[1.05] text-black"
+  >
+    {[
+      <>Built for <span className="text-orange-500">Growth</span></>,
+      <>Not Empty Promises</>,
+    ].map((line, i) => (
+      <div key={i} className="overflow-hidden">
+        <motion.span
+          variants={{
+            hidden: { y: "100%" },
+            visible: {
+              y: "0%",
+              transition: {
+                duration: 0.9,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            },
+          }}
+          className={`block ${
+            i === 1 ? "font-normal text-black" : ""
+          }`}
         >
-          <span className="block mb-4 text-xs uppercase tracking-[0.4em] text-neutral-400">
-            Why Choose Midis
-          </span>
+          {line}
+        </motion.span>
+      </div>
+    ))}
+  </motion.h2>
 
-          <motion.h2
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[40px] sm:text-[50px] lg:text-[62px] font-semibold tracking-tight leading-[1.05]"
-          >
-            Built for{" "}
-            <span className="text-orange-500">Growth</span>
-            <br />
-            <span className="text-neutral-700 font-normal">
-              Not Empty Promises
-            </span>
-          </motion.h2>
+  {/* Paragraph */}
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+    className="mt-6 text-lg text-black/70 max-w-2xl"
+  >
+    Anyone can offer services. We build long-term partnerships focused on
+    clarity, performance, and measurable outcomes.
+  </motion.p>
+</div>
 
-          <p className="mt-6 text-lg text-neutral-600 leading-relaxed">
-            Anyone can offer services. We build long-term partnerships focused on
-            clarity, performance, and measurable outcomes.
-          </p>
-        </motion.div>
 
-        {/* ================= CONTENT ================= */}
-        <div className="space-y-32">
-          {reasons.map((item, index) => {
-            const reverse = index % 2 !== 0;
-            const fromX = reverse ? 140 : -140;
+      {/* ================= INTRO SPACER (STATIC VIEW) ================= */}
+      <div className="h-[10vh] bg-white" />
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: fromX }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{
-                  duration: 0.9,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center"
+      {/* ================= STICKY HORIZONTAL SLIDER ================= */}
+      <div className="sticky top-32 h-[75vh] flex items-center overflow-hidden bg-white">
+        <motion.div style={{ x }} className="flex gap-20 px-[5vw]">
+          {reasons.map((item, index) => (
+            <div
+              key={index}
+              className="w-[75vw] max-w-[820px] flex-shrink-0"
+            >
+              {/* CARD */}
+              <div
+                className="
+                  group
+                  relative
+                  rounded-[30px]
+                  overflow-hidden
+                  bg-white
+                  border
+                  border-neutral-200/60
+               
+                  transition-all
+                  duration-700
+                ]
+                "
               >
-                {/* TEXT */}
-                <div className={reverse ? "lg:order-2" : ""}>
-                  <span className="text-xs uppercase tracking-[0.35em] text-orange-500">
+                {/* IMAGE */}
+                <div className="relative h-[420px] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="
+                      absolute inset-0 w-full h-full object-cover
+                      transition-transform duration-[1000ms] ease-out
+                      group-hover:scale-[1.06]
+                    "
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+                  <span className="absolute bottom-8 left-8 text-[11px] uppercase tracking-[0.45em] text-white/90 font-medium">
                     {item.eyebrow}
                   </span>
+                </div>
 
-                  <h3 className="mt-4 text-2xl sm:text-3xl font-medium tracking-tight text-neutral-900">
+                {/* CONTENT */}
+                <div className="px-12 py-14">
+                  <div className="mb-6 h-[2px] w-16 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full" />
+                  <h3 className="text-[28px] sm:text-[32px] font-semibold tracking-tight text-neutral-900 leading-snug">
                     {item.title}
                   </h3>
-
-                  <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-xl">
+                  <p className="mt-6 text-[17px] sm:text-[18px] text-neutral-600 leading-relaxed max-w-[90%]">
                     {item.description}
                   </p>
                 </div>
-
-                {/* IMAGE */}
-                <motion.div
-                  className="
-                    relative
-                    rounded-3xl
-                    overflow-hidden
-                    bg-neutral-100
-                    shadow-[0_30px_80px_-30px_rgba(0,0,0,0.3)]
-                  "
-                  whileHover={!isMobile ? { scale: 0.97 } : {}}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                >
-                  <motion.img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-[260px] sm:h-[340px] lg:h-[420px] object-cover"
-                    whileHover={!isMobile ? { scale: 1.08 } : {}}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                  />
-                </motion.div>
-              </motion.div>
-            );
-          })}
-        </div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

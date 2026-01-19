@@ -6,6 +6,7 @@ import MarqueeImages from "@/components/MarqueeImages";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import WhatYouGain from "@/components/WhatYouGain";
 import Services from "@/components/Services";
+import FAQ from "@/components/FAQ";
 
 
 import CTA from "@/components/CTA";
@@ -25,6 +26,8 @@ const Index = () => {
     {/* <whymidis /> */}
       <Services />
       <WhatYouGain />
+        {/* FAQ SECTION */}
+      <FAQ />
       <CTA />
       <Footer />
     </div>

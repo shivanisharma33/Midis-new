@@ -1,117 +1,158 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { Check, X, User, Tag } from "lucide-react";
 
 /* ================= DATA ================= */
 
-const benefits = [
+const steps = [
   {
-    title: "Experience Across Borders",
-    description:
-      "We understand what works globally and tailor strategies for different markets.",
+    number: "01",
+    title: " Experience across borders",
+    description: "we know what works globally.",
+    icon: Check,
   },
   {
-    title: "All-in-One Solutions",
+    number: "02",
+    title: "All-in-one solutions",
     description:
-      "No need to manage multiple agencies — everything is handled under one roof.",
+      " no need to hire five different agencies.",
+    icon: X,
   },
   {
-    title: "Clear Communication",
+    number: "03",
+    title: "Clear communication",
     description:
-      "No jargon, no confusion. Just clear insights and actionable results.",
+      "no jargon, just results explained simply.",
+    icon: User,
   },
   {
-    title: "Scalable Growth Strategies",
-    description:
-      "Our strategies are designed to evolve and grow with your business.",
+    number: "04",
+    title: "Growth strategies ",
+    description: "designed to scale with your business.",
+    icon: Tag,
   },
 ];
 
 /* ================= COMPONENT ================= */
 
 const WhatYouGain = () => {
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
   return (
-    <section className="relative py-24 sm:py-28 bg-white overflow-hidden">
-      {/* Soft background */}
-      <div className="absolute inset-0 -z-10 bg-neutral-50" />
+    <section
+      ref={sectionRef}
+      className="relative h-[300vh] bg-black text-white"
+    >
+      {/* ================= STICKY WRAPPER ================= */}
+      <div className="sticky top-0 h-screen flex items-center">
+        <div className="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
+          
+          {/* ================= LEFT SIDE ================= */}
+        <div className="flex items-center">
+  <div className="overflow-hidden">
+    <motion.h2
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.08,
+          },
+        },
+      }}
+      className="text-[42px] sm:text-[54px] lg:text-[64px] font-semibold leading-[1.05]"
+    >
+      {["What You’ll Gain", "With Midis"].map((line, i) => (
+        <div key={i} className="overflow-hidden">
+          <motion.span
+            variants={{
+              hidden: { y: "100%" },
+              visible: {
+                y: "0%",
+                transition: {
+                  duration: 0.9,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+              },
+            }}
+            className="block"
+          >
+            {line}
+          </motion.span>
+        </div>
+      ))}
+    </motion.h2>
+  </div>
+</div>
 
-      <div className="max-w-6xl mx-auto px-6 sm:px-10">
-        {/* ================= HEADER ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mb-16"
-        >
-          <span className="block text-xs uppercase tracking-[0.35em] text-neutral-400 mb-4">
-            Partnership That Delivers
-          </span>
+          {/* ================= RIGHT SIDE ================= */}
+          <div className="space-y-6">
+            {steps.map((step, index) => {
+              const start = index / steps.length;
+              const end = (index + 1) / steps.length;
 
-          <h2 className="text-[38px] sm:text-[46px] lg:text-[54px] font-semibold tracking-tight leading-[1.05]">
-            What You’ll Gain With{" "}
-            <span className="text-orange-500">Midis</span>
-          </h2>
+              const opacity = useTransform(
+                scrollYProgress,
+                [start, end],
+                [0.3, 1]
+              );
 
-          <p className="mt-5 text-lg text-neutral-600 leading-relaxed">
-            When you work with Midis, you’re not just outsourcing tasks —
-            you’re building a long-term partnership focused on real growth.
-          </p>
-        </motion.div>
+              const y = useTransform(
+                scrollYProgress,
+                [start, end],
+                [40, 0]
+              );
 
-        {/* ================= BENEFITS ================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {benefits.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.08,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="
-                group
-                relative
-                p-7
-                rounded-2xl
-                bg-gradient-to-br from-white via-neutral-50 to-white
-                ring-1 ring-neutral-200/60
-                hover:ring-orange-500/40
-                transition-all duration-300
-                hover:-translate-y-1
-                hover:shadow-[0_25px_50px_-25px_rgba(0,0,0,0.25)]
-              "
-            >
-              {/* Icon + Title */}
-              <div className="mb-5 flex items-center gap-4">
-                <div
+              const Icon = step.icon;
+
+              return (
+                <motion.div
+                  key={index}
+                  style={{ opacity, y }}
                   className="
-                    w-11 h-11
-                    rounded-xl
-                    bg-orange-500/10
-                    flex items-center justify-center
-                    group-hover:bg-orange-500/15
-                    transition-colors
+                    relative
+                    flex
+                    gap-6
+                    p-6
+                    rounded-2xl
+                    border
+                    border-white/10
+                    bg-white/[0.03]
+                    backdrop-blur
                   "
                 >
-                  <Check className="w-5 h-5 text-orange-500" />
-                </div>
+                  {/* Number */}
+                  <span className="text-white/40 text-sm font-medium">
+                    {step.number}
+                  </span>
 
-                <h4 className="text-lg font-medium text-neutral-900">
-                  {item.title}
-                </h4>
-              </div>
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h4 className="text-lg font-medium">
+                      {step.title}
+                    </h4>
+                    <p className="mt-1 text-white/60 text-sm leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
 
-              {/* Description */}
-              <p className="text-neutral-600 leading-relaxed">
-                {item.description}
-              </p>
-            </motion.div>
-          ))}
+                  {/* Icon */}
+                  <div className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-white/70" />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
